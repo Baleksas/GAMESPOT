@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+:root {
+  /* HEADER/FOOTER SIZES */
+  --large-hf: 60px;
+  --medium-hf: 40px;
+}
+/* GLOBAL */
+
+* {
+  font-family: "Press Start 2P", cursive;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+button {
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+/* HEADER */
+header {
+  height: var(--large-hf);
+  background-color: white;
+  display: flex;
+}
+
+nav {
+  width: 90%;
+  margin: auto;
+  height: 80%;
+  display: flex;
+  align-self: center;
+}
+header ul {
+  display: flex;
+  justify-content: space-around;
+  align-self: center;
+  height: 80%;
+  width: 100%;
+}
+header li {
+  align-self: center;
+  font-size: 1.2em;
+}
+header li a {
+  color: black;
+}
+.header_white {
+  background-color: white;
+  color: black;
+}
+#title {
+  align-self: flex-start;
+  font-size: 1.8em;
+}
+#title a {
+  color: rgb(180, 77, 77);
+}
+header li a:focus {
+  border-bottom: 5px solid black;
+}
+/* FAQ */
+.FAQ-link {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 50px;
+  color: white;
+}
+
+.FAQ {
+  position: absolute;
+  bottom: 70px;
+  right: 70px;
+  text-align: center;
+  padding: 10px 15px;
+  background-color: rgba(180, 77, 77, 0.8);
+  width: 200px;
+  height: 300px;
+  display: none;
+  border: 3px solid white;
+}
+.show {
+  display: block;
+}
+/* CONTAINER */
+.container {
+  width: 100%;
+  height: 84vh;
+  background-color: black;
+  position: relative;
+  color: white;
+}
+
+/* FOOTER */
+footer {
+  background-color: white;
+  height: var(--large-hf);
+}
