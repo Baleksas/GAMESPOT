@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 const Main = () => {
   return (
     <motion.section
-      initial={{ scaleY: 0, scaleX: 0 }}
+      id="main"
+      initial={{ scaleY: 1, scaleX: 1 }}
       animate={{ scaleY: 1, scaleX: 1 }}
       exit={{ scaleY: 0, scaleX: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0 }}
     >
       MAIN
     </motion.section>

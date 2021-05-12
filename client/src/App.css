@@ -84,11 +84,18 @@ header li a {
   font-size: 50px;
   color: white;
 }
-
+.play {
+  position: absolute;
+  bottom: 40px;
+  right: 100px;
+  font-size: 20px;
+  color: white;
+}
 .FAQ {
   position: absolute;
+  z-index: 2;
   bottom: 20px;
-  right: 80px;
+  right: 100px;
   text-align: center;
   padding: 10px 15px;
   background-color: rgba(180, 77, 77, 0.8);
@@ -97,8 +104,31 @@ header li a {
   display: none;
   border: 3px solid white;
 }
+
+.FAQ ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex: 1;
+}
+
+.faq-li span {
+  font-size: 0.7em;
+}
+.faq-li img {
+  max-width: 30px;
+}
+#music {
+  visibility: hidden;
+}
+
+.links {
+  display: flex;
+  justify-content: space-around;
+}
 .show {
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 /* CONTAINER */
 .container {
@@ -113,15 +143,9 @@ header li a {
   color: white;
   display: flex;
 }
-
-/* DINO */
-.dino {
-  background-color: rgb(97, 90, 90);
-  width: 50%;
-  height: 50%;
-  margin: auto;
+#main {
+  background: transparent;
 }
-
 /* FOOTER */
 footer {
   background-color: white;
@@ -182,4 +206,56 @@ footer {
     -webkit-transform: translateX(-100%); /* Firefox bug fix */
     transform: translateX(-100%);
   }
+}
+/* DINO */
+.dino {
+  background-color: rgb(97, 90, 90);
+  width: 50%;
+  height: 50%;
+  margin: auto;
+}
+#character {
+  width: 20px;
+  height: 50px;
+  background-color: red;
+  position: relative;
+  top: 150px;
+}
+.animate {
+  animation: jump 0.3s linear;
+}
+@keyframes jump {
+  0% {
+    top: 150px;
+  }
+  30% {
+    top: 100px;
+  }
+  70% {
+    top: 100px;
+  }
+  100% {
+    top: 150px;
+  }
+}
+
+#block {
+  background-color: blue;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: 130px;
+  left: 500px;
+  animation: block 1s infinite linear;
+}
+@keyframes block {
+  0% {
+    left: 500px;
+  }
+  100% {
+    left: -20px;
+  }
+}
+p {
+  text-align: center;
 }

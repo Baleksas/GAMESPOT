@@ -8,13 +8,8 @@ const Dino = () => {
       animate={{ scaleY: 1, scaleX: 1 }}
       exit={{ scaleY: 0, scaleX: 0 }}
       transition={{ duration: 0.5 }}
-    >
-      <div id="dino" className="dino">
-        Dino
-      </div>
-    </motion.section>
+    ></motion.section>
   );
 };
 
 export default Dino;
-const dino = document.getElementById("dino");
