@@ -68,12 +68,12 @@ header li a {
 }
 #title {
   align-self: flex-start;
-  font-size: 1.8em;
+  font-size: 2em;
 }
 #title a {
   color: rgb(180, 77, 77);
 }
-header li a:focus {
+.navItem a:focus {
   border-bottom: 5px solid black;
 }
 /* FAQ */
@@ -102,8 +102,11 @@ header li a:focus {
 }
 /* CONTAINER */
 .container {
-  background-image: url("img/Background.jpg");
-  background-size: cover;
+  background-image: url("img/Background.gif");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: black;
   width: 100%;
   flex: 1;
   position: relative;
