@@ -12,6 +12,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+.App {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
 a {
   text-decoration: none;
 }
@@ -30,7 +35,12 @@ header {
   background-color: white;
   display: flex;
 }
-
+section {
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
 nav {
   width: 90%;
   margin: auto;
@@ -92,9 +102,10 @@ header li a:focus {
 }
 /* CONTAINER */
 .container {
+  background-image: url("img/Background.jpg");
+  background-size: cover;
   width: 100%;
-  height: 84vh;
-  background-color: black;
+  flex: 1;
   position: relative;
   color: white;
   display: flex;
@@ -113,6 +124,7 @@ footer {
   background-color: white;
   align-content: center;
   height: var(--large-hf);
+  min-height: var(--large-hf);
 }
 /* SCROLLING TEXT */
 .example1 {
