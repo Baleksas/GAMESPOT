@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
-
 const Top = () => {
   return (
     <motion.section
@@ -9,7 +8,7 @@ const Top = () => {
       exit={{ scaleY: 0, scaleX: 0 }}
       transition={{ duration: 0.5 }}
     >
-      Top
+      <p>TOP</p>
     </motion.section>
   );
 };

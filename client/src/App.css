@@ -37,10 +37,23 @@ header {
   display: flex;
 }
 section {
-  background-color: black;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.4),
+    rgba(0, 0, 0, 0.8)
+  );
+  border: 1px solid white;
+  height: 90%;
+  width: 90%;
+  margin: auto;
+  display: flex;
+  align-self: center;
+}
+#main {
+  border: none;
+  background: transparent;
   height: 100%;
   width: 100%;
-  display: flex;
 }
 nav {
   width: 90%;
@@ -140,8 +153,10 @@ header li a {
   background-color: black;
   width: 100%;
   flex: 1;
+  display: flex;
   position: relative;
   color: white;
+  overflow-y: hidden;
 }
 #main {
   background: transparent;
@@ -173,9 +188,9 @@ footer {
   -webkit-transform: translateX(100%);
   transform: translateX(100%);
   /* Apply animation to this element */
-  -moz-animation: example1 15s linear infinite;
-  -webkit-animation: example1 15s linear infinite;
-  animation: example1 15s linear infinite;
+  -moz-animation: example1 8s linear infinite;
+  -webkit-animation: example1 8s linear infinite;
+  animation: example1 8s linear infinite;
 }
 /* Move it (define the animation) */
 @-moz-keyframes example1 {
@@ -261,7 +276,7 @@ p {
 /* REVIEWS */
 .wrapper {
   width: 80%;
-  height: 80%;
+  max-height: 80%;
   display: flex;
   margin: auto;
 }
@@ -269,12 +284,15 @@ p {
   display: grid;
   width: 100%;
   max-height: 100%;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 400px));
   gap: 3em;
   overflow-y: auto;
+  position: relative;
 }
 /* REVIEW */
 .review {
+  height: max-content;
+  min-height: 100px;
   max-height: 200px;
   background-color: #270026;
   border: 2px solid #cf00f0;
@@ -291,7 +309,7 @@ p {
   align-items: center;
 }
 .game-icon {
-  max-width: 100px;
+  width: 80px;
 }
 .game-icon img {
   height: 100%;

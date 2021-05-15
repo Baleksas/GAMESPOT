@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, createContext } from "react";
 import { motion } from "framer-motion";
 
-const Dino = () => {
+const Dino = (props) => {
+  const [score, setScore] = useState(0);
   return (
     <motion.section
       initial={{ scaleY: 0, scaleX: 0 }}

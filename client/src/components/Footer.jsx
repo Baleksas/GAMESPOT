@@ -18,6 +18,10 @@ const Footer = ({ text }) => {
     case "/m-sweeper":
       FooterMessage = "Pretend it's a real life soldier!";
       break;
+    case "/":
+      FooterMessage =
+        "⍙⟒⌰☊⍜⋔⟒ ⊑⎍⋔⏃⋏ ⊬⍜⎍ ⏃⍀⟒ ☌⍀⟒⟒⏁⟒⎅ ⏚⊬ ⍜⎍⍀ ⌇⌿⟒☊⏁⏃☊⎍⌰⏃⍀ ☊⍀⟒⏃⏁⟟⍜⋏";
+      break;
   }
   return (
     <footer className="example1">

@@ -1,8 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Review from "../Elements/Review";
+import { useSelector } from "react-redux";
 
 const Reviews = () => {
+  const reviews = useSelector((state) => state.reviews);
+  console.log(reviews);
   return (
     <motion.section
       initial={{ scaleY: 0, scaleX: 0 }}

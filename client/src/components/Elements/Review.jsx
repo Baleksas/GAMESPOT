@@ -4,7 +4,7 @@ const Review = () => {
   return (
     <div className="review">
       <div className="review-text">
-        <p> ME LIKEY LIKEY</p>
+        <p>ME LIKEY LIKEY</p>
         <span>- Saul Goodman</span>
       </div>
       <div className="review-game">
