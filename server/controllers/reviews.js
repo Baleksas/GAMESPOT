@@ -10,8 +10,8 @@ export const getReviews = async (req, res) => {
   }
 };
 export const createReview = async (req, res) => {
-  const review = req.body;
-  const newReview = new ReviewMessage(review);
+  const { message, maxScore, author, game } = req.body;
+  const newReview = new ReviewMessage({ message, maxScore, author, game });
   try {
     await newReview.save();
     res.status(201).json(newReview);

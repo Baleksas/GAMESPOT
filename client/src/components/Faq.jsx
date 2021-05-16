@@ -25,7 +25,7 @@ const Faq = () => {
           </li>
           <li className="faq-li">
             <h5> HOW</h5>
-            <span>react</span>
+            <span>mern stack</span>
           </li>
           <li className="faq-li">
             <h5> WHEN</h5>

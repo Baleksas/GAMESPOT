@@ -1,17 +1,23 @@
 import React from "react";
 import Dino from "../../img/Dino.jpg";
-const Review = () => {
+import M_sweeper from "../../img/M-sweeper.png";
+import Other from "../../img/Background.gif";
+
+const Review = ({ review }) => {
   return (
     <div className="review">
       <div className="review-text">
-        <p>ME LIKEY LIKEY</p>
-        <span>- Saul Goodman</span>
+        <p>{review.message}</p>
+        <span>- {review.author}</span>
       </div>
       <div className="review-game">
         <div className="game-icon">
-          <img src={Dino} alt="Dino" />
+          {review.game === "dino" && <img src={Dino} alt="Dino" />}
+          {review.game === "m-sweeper" && (
+            <img src={M_sweeper} alt="M-sweeper" />
+          )}
+          {review.game === "other" && <img src={Other} alt="Other" />}
         </div>
-        <span>-Console</span>
       </div>
     </div>
   );

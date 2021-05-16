@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const reviewSchema = mongoose.Schema({
   message: String,
+  game: String,
   author: String,
   maxScore: {
     default: 0,

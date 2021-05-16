@@ -6,14 +6,15 @@ import bodyParser from "body-parser";
 import Routes from "./routes/posts.js";
 
 const app = express();
+
+app.use(express.json({ limit: "30mb", extended: true })); // for parsing application/json
+app.use(express.urlencoded({ limit: "30mb", extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(cors());
 
 app.use("/", Routes);
 
-app.use(express.json({ limit: "30mb", extended: true })); // for parsing application/json
-app.use(express.urlencoded({ limit: "30mb", extended: true })); // for parsing application/x-www-form-urlencoded
-
 const CONNECTION_URL =
+
 const PORT = process.env.PORT || 5000;
 
 mongoose
