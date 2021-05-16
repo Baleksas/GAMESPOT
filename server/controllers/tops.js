@@ -1,4 +1,4 @@
-import TopMessage from "../models/topMessage";
+import TopMessage from "../models/topMessage.js";
 export const getTops = async (req, res) => {
   try {
     const topMessages = await TopMessage.find();
@@ -8,8 +8,8 @@ export const getTops = async (req, res) => {
   }
 };
 export const createTop = async (req, res) => {
-  const top = req.body;
-  const newTop = new TopMessage(top);
+  const { player, maxScore, game } = req.body;
+  const newTop = new TopMessage({ player, maxScore, game });
   try {
     await newTop.save();
     res.status(201).json(newTop);

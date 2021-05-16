@@ -1,23 +1,20 @@
 import "./App.css";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Container from "./components/Container";
 import Footer from "./components/Footer";
-import { useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { getReviews } from "./actions/reviews";
-function App() {
-  const dispatch = useDispatch();
-  const location = useLocation();
 
+function App() {
+  let random = Math.floor(Math.random() * 1000);
+  const [name, setName] = useState(`ALIEN_${random}`);
   useEffect(() => {
-    dispatch(getReviews());
-  }, [dispatch]);
+    console.log(name);
+  }, [name]);
   return (
     <div className="App">
       <Header />
-      <Container />
+      <Container name={name} setName={setName} />
       <Footer />
     </div>
   );

@@ -7,7 +7,7 @@ const Review = ({ review }) => {
   return (
     <div className="review">
       <div className="review-text">
-        <p>{review.message}</p>
+        <p>"{review.message}"</p>
         <span>- {review.author}</span>
       </div>
       <div className="review-game">

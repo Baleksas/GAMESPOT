@@ -1,10 +1,6 @@
 import express from "express";
-import {
-  getReviews,
-  createReview,
-  getTops,
-  createTop,
-} from "../controllers/reviews.js";
+import { getReviews, createReview } from "../controllers/reviews.js";
+import { getTops, createTop } from "../controllers/tops.js";
 
 const router = express.Router();
 

@@ -244,7 +244,8 @@ footer {
   position: relative;
 }
 /* REVIEW */
-.review {
+.review,
+.top-item {
   height: 120px;
   width: 100%;
   background-color: #270026;
@@ -297,4 +298,34 @@ select {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+/* DINO */
+.dino-button {
+  background-color: khaki;
+  height: max-content;
+  padding: 5em;
+}
+.dino-button:hover {
+  opacity: 0.5;
+}
+/* TOP */
+.top {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 30%);
+}
+.top-item {
+  height: max-content;
+  padding: 1em;
+  display: flex;
+  justify-content: space-around;
+}
+.top-1 {
+  color: khaki;
+}
+.top-2 {
+  color: #c4d7d7;
+}
+.top-3 {
+  color: #7b946f;
 }

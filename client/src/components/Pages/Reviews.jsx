@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import Review from "../Elements/Review";
 import { useSelector } from "react-redux";
 import Form from "../Elements/Form";
 import Loading from "../Elements/Loading";
+import { getReviews } from "../../actions/reviews";
+import { useDispatch } from "react-redux";
 
 const Reviews = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getReviews());
+  }, [dispatch]);
   const reviews = useSelector((state) => state.reviews);
+
   return (
     <motion.section
       initial={{ scaleY: 0, scaleX: 0 }}

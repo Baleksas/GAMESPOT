@@ -9,7 +9,7 @@ import Faq from "../components/Faq";
 import { AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
 
-const Container = () => {
+const Container = ({ name, setName }) => {
   const location = useLocation();
 
   return (
@@ -18,10 +18,10 @@ const Container = () => {
         <AnimatePresence exitBeforeEnter initial={false}>
           <Switch location={location} key={location.pathname}>
             <Route exact path="/">
-              <Main />
+              <Main name={name} setName={setName} />
             </Route>
             <Route path="/dino">
-              <Dino />
+              <Dino name={name} />
             </Route>
             <Route path="/top">
               <Top />
