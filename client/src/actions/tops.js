@@ -26,3 +26,12 @@ export const updateTop = (id, top) => async (dispatch) => {
     console.log(error.message);
   }
 };
+export const deleteTop = (id) => async (dispatch) => {
+  try {
+    await api.deleteTop(id);
+
+    dispatch({ type: "DELETE", payload: id });
+  } catch (error) {
+    console.log(error.message);
+  }
+};

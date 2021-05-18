@@ -13,3 +13,5 @@ export const createTop = (newTop) => axios.post(url_top, newTop);
 
 export const updateTop = (id, updatedTop) =>
   axios.patch(`${url_top}/${id}`, updatedTop);
+
+export const deleteTop = (id) => axios.delete(`${url_top}/${id}`);

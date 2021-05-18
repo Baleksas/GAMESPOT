@@ -29,3 +29,12 @@ export const updateTop = async (req, res) => {
   await TopMessage.findByIdAndUpdate(id, updatedTop, { new: true });
   res.json(updatedTop);
 };
+export const deleteTop = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`No post with: ${id}`);
+
+  await TopMessage.findByIdAndDelete(id);
+  res.json({ message: "Top deleted." });
+};

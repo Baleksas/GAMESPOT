@@ -8,6 +8,8 @@ export default (tops = [], action) => {
       return tops.map((top) =>
         top._id === action.payload._id ? action.payload : top
       );
+    case "DELETE":
+      return tops.filter((top) => top._id !== action.payload);
     default:
       return tops;
   }
