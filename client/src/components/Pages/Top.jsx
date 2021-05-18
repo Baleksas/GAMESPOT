@@ -27,7 +27,8 @@ const Top = () => {
   });
   // FIXME- Delete all tops after third with for loop (for i=3...) and leave just three tops.
   // To have several games, filter and sorting efficient alghorithms will be needed
-  const showTops = tops.slice(0, 3);
+
+  const showDinoTops = tops.filter((top) => top.game === "dino").slice(0, 3);
   return (
     <motion.section
       initial={{ scaleY: 0, scaleX: 0 }}
@@ -39,7 +40,7 @@ const Top = () => {
         {!tops.length ? (
           <Loading />
         ) : (
-          showTops.map((top) => <TopItem key={top._id} top={top} />)
+          showDinoTops.map((top) => <TopItem key={top._id} top={top} />)
         )}
       </div>
     </motion.section>

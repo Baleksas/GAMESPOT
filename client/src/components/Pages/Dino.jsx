@@ -18,23 +18,20 @@ const Dino = ({ name }) => {
     setTopData({ ...topData, maxScore: score + 1 });
   };
   const checkIfTop = () => {
-    // FIXME-Make update functionallity - according to player, update the score to avoid creating more tops (possible to do without updating, by creating+deleting)
+    let nameExists = false;
     if (tops.length !== 0)
       for (var i = 0; i < tops.length; i++) {
-        console.log("in i");
+        if (topData.player === tops[i].player) nameExists = true;
         if (topData.maxScore > tops[i].maxScore) {
-          console.log("in if");
-          for (var j = 0; j < tops.length; j++) {
-            console.log("in j");
-            if (topData.player === tops[j].player) {
-              console.log(tops[j]._id);
-              dispatch(updateTop(tops[j]._id, topData));
-              return;
-            }
+          if (topData.player === tops[i].player) {
+            dispatch(updateTop(tops[i]._id, topData));
+            return;
           }
+          dispatch(createTop(topData));
+          return;
         }
       }
-    if (tops.length < 3) dispatch(createTop(topData));
+    if (tops.length < 3 && !nameExists) dispatch(createTop(topData));
   };
   return (
     <motion.section
