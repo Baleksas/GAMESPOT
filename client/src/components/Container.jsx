@@ -34,7 +34,6 @@ const Container = ({ name, setName }) => {
             </Route>
           </Switch>
         </AnimatePresence>
-
         <Faq />
       </div>
     </>

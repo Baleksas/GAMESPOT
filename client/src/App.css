@@ -54,6 +54,9 @@ section {
   background: transparent;
   height: 100%;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 nav {
   width: 90%;
@@ -328,4 +331,19 @@ select {
 }
 .top-3 {
   color: #7b946f;
+}
+.hidden {
+  position: absolute;
+  bottom: 0;
+  height: 80px;
+  left: 0;
+}
+.main-choose {
+}
+.no-name-btn {
+  padding: 1em;
+  background-color: white;
+}
+.no-name-btn:hover {
+  opacity: 0.8;
 }

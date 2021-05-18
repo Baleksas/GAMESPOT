@@ -19,8 +19,7 @@ const Footer = ({ text }) => {
       FooterMessage = "Pretend it's a real life soldier!";
       break;
     case "/":
-      FooterMessage =
-        "⍙⟒⌰☊⍜⋔⟒ ⊑⎍⋔⏃⋏ ⊬⍜⎍ ⏃⍀⟒ ☌⍀⟒⟒⏁⟒⎅ ⏚⊬ ⍜⎍⍀ ⌇⌿⟒☊⏁⏃☊⎍⌰⏃⍀ ☊⍀⟒⏃⏁⟟⍜⋏";
+      FooterMessage = "6#$%#$&451#$^6#5%&8789$#%$&";
       break;
   }
   return (

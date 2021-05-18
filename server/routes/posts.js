@@ -1,6 +1,6 @@
 import express from "express";
 import { getReviews, createReview } from "../controllers/reviews.js";
-import { getTops, createTop } from "../controllers/tops.js";
+import { getTops, createTop, updateTop } from "../controllers/tops.js";
 
 const router = express.Router();
 
@@ -9,5 +9,6 @@ router.post("/reviews", createReview);
 
 router.get("/top", getTops);
 router.post("/top", createTop);
+router.patch("/top/:id", updateTop);
 
 export default router;

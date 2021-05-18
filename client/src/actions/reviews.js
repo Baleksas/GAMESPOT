@@ -17,3 +17,12 @@ export const createReview = (review) => async (dispatch) => {
     console.log(error);
   }
 };
+export const updateTop = (id, top) => async (dispatch) => {
+  try {
+    const { data } = await api.updateTop(id, top);
+
+    dispatch({ type: "UPDATE", payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
+};

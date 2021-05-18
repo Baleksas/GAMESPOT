@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import TopMessage from "../models/topMessage.js";
 export const getTops = async (req, res) => {
   try {
@@ -16,4 +17,15 @@ export const createTop = async (req, res) => {
   } catch (error) {
     res.status(409).json({ message: error.message });
   }
+};
+export const updateTop = async (req, res) => {
+  const { id } = req.params;
+  const { game, player, maxScore } = req.body;
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`No post with: ${id}`);
+
+  const updatedTop = { game, player, maxScore, _id: id };
+  await TopMessage.findByIdAndUpdate(id, updatedTop, { new: true });
+  res.json(updatedTop);
 };

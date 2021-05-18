@@ -25,8 +25,9 @@ const Top = () => {
   tops.forEach((top, index) => {
     top.place = index + 1;
   });
+  // FIXME- Delete all tops after third with for loop (for i=3...) and leave just three tops.
+  // To have several games, filter and sorting efficient alghorithms will be needed
   const showTops = tops.slice(0, 3);
-  console.log(showTops);
   return (
     <motion.section
       initial={{ scaleY: 0, scaleX: 0 }}

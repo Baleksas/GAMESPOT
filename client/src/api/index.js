@@ -10,3 +10,6 @@ export const createReview = (newReview) => axios.post(url, newReview);
 export const fetchTops = () => axios.get(url_top);
 
 export const createTop = (newTop) => axios.post(url_top, newTop);
+
+export const updateTop = (id, updatedTop) =>
+  axios.patch(`${url_top}/${id}`, updatedTop);

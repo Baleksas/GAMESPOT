@@ -1,9 +1,8 @@
 import React, { useState, createContext } from "react";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
-import { createTop } from "../../actions/tops";
+import { createTop, updateTop } from "../../actions/tops";
 import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
 
 const Dino = ({ name }) => {
   const dispatch = useDispatch();
@@ -19,15 +18,23 @@ const Dino = ({ name }) => {
     setTopData({ ...topData, maxScore: score + 1 });
   };
   const checkIfTop = () => {
-    if (tops.length < 3) dispatch(createTop(topData));
-    else {
-      for (var i = 0; i < 3; i++) {
+    // FIXME-Make update functionallity - according to player, update the score to avoid creating more tops (possible to do without updating, by creating+deleting)
+    if (tops.length !== 0)
+      for (var i = 0; i < tops.length; i++) {
+        console.log("in i");
         if (topData.maxScore > tops[i].maxScore) {
-          dispatch(createTop(topData));
-          break;
+          console.log("in if");
+          for (var j = 0; j < tops.length; j++) {
+            console.log("in j");
+            if (topData.player === tops[j].player) {
+              console.log(tops[j]._id);
+              dispatch(updateTop(tops[j]._id, topData));
+              return;
+            }
+          }
         }
       }
-    }
+    if (tops.length < 3) dispatch(createTop(topData));
   };
   return (
     <motion.section

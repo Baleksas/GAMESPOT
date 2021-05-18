@@ -8,13 +8,12 @@ import Footer from "./components/Footer";
 function App() {
   let random = Math.floor(Math.random() * 1000);
   const [name, setName] = useState(`ALIEN_${random}`);
-  useEffect(() => {
-    console.log(name);
-  }, [name]);
+
   return (
     <div className="App">
       <Header />
       <Container name={name} setName={setName} />
+
       <Footer />
     </div>
   );
