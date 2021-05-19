@@ -303,11 +303,40 @@ select {
 .dino-button:hover {
   opacity: 0.5;
 }
+.dino-tops {
+  display: flex;
+}
 /* TOP */
 .top {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(3, 30%);
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: repeat(2, 50%);
+  align-items: center;
+}
+.loading-container-dino {
+  grid-row-start: 1;
+}
+.loading-container-ms {
+  grid-row-start: 2;
+}
+#ms-img {
+  grid-column-start: 1;
+  grid-row-start: 2;
+}
+#dino-img {
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
+.tops-icon {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tops-icon img {
+  height: 50%;
 }
 .top-item {
   height: max-content;

@@ -3,23 +3,31 @@ import { useDispatch } from "react-redux";
 import { createReview } from "../../actions/reviews";
 const Form = () => {
   const dispatch = useDispatch();
-
   const [reviewData, setReviewData] = useState({
     author: "",
     message: "",
     game: "dino",
-    maxScore: 6,
+    maxScore: 0,
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createReview(reviewData));
+    // Clearing form
+
+    setReviewData({
+      author: "",
+      message: "",
+      game: "dino",
+      maxScore: 0,
+    });
   };
   return (
     <div className="review">
       <div className="review-text">
         <form autoComplete="off" noValidate onSubmit={handleSubmit}>
           <input
+            value={reviewData.message}
             onChange={(e) =>
               setReviewData({ ...reviewData, message: e.target.value })
             }
@@ -29,6 +37,7 @@ const Form = () => {
             placeholder="message"
           />
           <input
+            value={reviewData.author}
             onChange={(e) =>
               setReviewData({ ...reviewData, author: e.target.value })
             }
@@ -38,6 +47,7 @@ const Form = () => {
             placeholder="author"
           />
           <select
+            value={reviewData.game}
             onChange={(e) =>
               setReviewData({ ...reviewData, game: e.target.value })
             }

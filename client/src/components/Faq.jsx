@@ -58,7 +58,7 @@ const Faq = () => {
         }}
         className="play"
       >
-        Play
+        Music
       </button>
     </>
   );

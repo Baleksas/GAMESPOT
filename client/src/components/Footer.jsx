@@ -1,16 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getTops } from "../actions/tops";
+import { useSelector } from "react-redux";
 
 const Footer = ({ text }) => {
   const location = useLocation();
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getTops());
+  }, [dispatch]);
+  const tops = useSelector((state) => state.tops);
   let FooterMessage = "";
   switch (location.pathname) {
     case "/reviews":
       FooterMessage = "Thanks for the feedback!";
       break;
     case "/top":
-      FooterMessage = "You can do this pal!";
+      FooterMessage = tops.length
+        ? `Go on! You can beat that ${tops[0].player}`
+        : "There is not much competition, eh?";
       break;
     case "/dino":
       FooterMessage = "Don't worry, your internet is fine...";
