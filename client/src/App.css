@@ -306,14 +306,7 @@ select {
 .dino-tops {
   display: flex;
 }
-.smack-game {
-  display: flex;
-  width: 80%;
-  height: 80%;
-  margin: auto;
-  justify-content: space-around;
-  align-items: center;
-}
+
 .showBox {
   flex: 1;
   display: flex;
@@ -334,6 +327,9 @@ select {
   grid-template-columns: repeat(4, 25%);
   grid-template-rows: repeat(2, 50%);
   align-items: center;
+}
+.m-sweeper-game {
+  grid-row-start: 2;
 }
 .loading-container-dino {
   grid-row-start: 1;
@@ -423,4 +419,22 @@ select {
 }
 .poster img {
   border-radius: 25px;
+  max-height: 100%;
+}
+.guess-btn {
+  background-color: white;
+  padding: 10px 15px;
+}
+.guess-btn:hover {
+  opacity: 0.8;
+}
+.indicator img {
+  max-height: 100px;
+}
+.movie-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  align-items: center;
 }

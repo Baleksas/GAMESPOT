@@ -24,12 +24,27 @@ const Top = () => {
       }
     }
   }
-  tops.forEach((top, index) => {
-    top.place = index + 1;
-  });
+  const sort = (array) => {
+    for (var i = 0; i < array.length; i++) {
+      for (var j = 0; j < array.length; j++) {
+        if (array[i].maxScore > array[j].maxScore) {
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      }
+    }
+  };
   // FILTERS tops which will be shown and kept on a board
   const showDinoTops = tops.filter((top) => top.game === "dino").slice(0, 3);
+  console.log(showDinoTops);
+  showDinoTops.forEach((top, index) => {
+    top.place = index + 1;
+  });
+  sort(showDinoTops);
   const showMsTops = tops.filter((top) => top.game === "m-sweeper").slice(0, 3);
+  showMsTops.forEach((top, index) => {
+    top.place = index + 1;
+  });
+  sort(showMsTops);
 
   // FILTERS tops which have to be deleted as they are not used or shown. It means that if you want to lock your progress, you have to make a record score.
   const deleteDinoTops = tops.filter((top) => top.game === "dino").slice(3);

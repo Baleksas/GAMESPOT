@@ -1,32 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Loading from "../Elements/Loading";
-const IMG_API = "https://image.tmdb.org/t/p/w400";
+const IMG_API = "https://image.tmdb.org/t/p/w300";
 
-const Movie = ({ randomMovie }) => {
+const Movie = ({ randomMovie, setGuess, guess, compareGuess }) => {
+  const [inputGuess, setInputGuess] = useState(0);
+  const makeGuess = () => {
+    compareGuess();
+    setGuess(0);
+  };
   return (
     <>
-      <div className="poster">
-        {randomMovie ? (
-          <img src={IMG_API + randomMovie.poster_path} alt="" />
-        ) : (
-          <Loading />
-        )}
-      </div>
-      <div className="movie-info">
-        <h1 className="movie-title">
-          {randomMovie ? randomMovie.title : <Loading />}
-        </h1>
-        <p className="movie-overview">
-          {randomMovie ? randomMovie.overview : <Loading />}
-        </p>
-        <span className="movie-date">
-          {randomMovie ? randomMovie.release_date : <Loading />}
-        </span>
-        <div className="guess">
-          <input name="imdb" type="number" />
-          <button>GUESS</button>
-        </div>
-      </div>
+      {randomMovie ? (
+        <>
+          <div className="poster">
+            <img src={IMG_API + randomMovie.poster_path} alt="" />
+          </div>
+          <div className="movie-info">
+            <h1 className="movie-title">{randomMovie.title}</h1>
+            <p className="movie-overview">{randomMovie.overview}</p>
+            <span className="movie-date">
+              Release date: {randomMovie.release_date}
+            </span>
+            <div className="guess">
+              <input
+                value={guess}
+                onChange={(e) => setGuess(e.target.value)}
+                name="imdb"
+                type="number"
+              />
+              <button className="guess-btn" onClick={() => makeGuess()}>
+                GUESS
+              </button>
+            </div>
+          </div>
+        </>
+      ) : (
+        <Loading />
+      )}
     </>
   );
 };

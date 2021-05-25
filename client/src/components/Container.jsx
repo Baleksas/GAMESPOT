@@ -27,7 +27,7 @@ const Container = ({ name, setName }) => {
               <Top />
             </Route>
             <Route path="/m-sweeper">
-              <Msweeper />
+              <Msweeper name={name} />
             </Route>
             <Route path="/reviews">
               <Reviews />

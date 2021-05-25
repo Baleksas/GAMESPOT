@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { createTop, updateTop } from "../../actions/tops";
 import { useDispatch } from "react-redux";
-import Alien from "../../img/Alien.png";
 import Life from "../../img/Life.png";
 
 const Dino = ({ name }) => {
