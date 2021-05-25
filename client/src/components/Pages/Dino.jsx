@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { createTop, updateTop } from "../../actions/tops";
 import { useDispatch } from "react-redux";
+import Alien from "../../img/Alien.png";
+import Life from "../../img/Life.png";
 
 const Dino = ({ name }) => {
   const dispatch = useDispatch();
@@ -17,6 +19,7 @@ const Dino = ({ name }) => {
     setScore(score + 1);
     setTopData({ ...topData, maxScore: score + 1 });
   };
+
   const checkIfTop = () => {
     let nameExists = false;
     if (tops.length !== 0)
@@ -40,12 +43,21 @@ const Dino = ({ name }) => {
       exit={{ scaleY: 0, scaleX: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <button className="dino-button" onClick={increment}>
-        {score}
-      </button>
-      <button className="dino-button" onClick={checkIfTop}>
-        CHECK
-      </button>
+      <div className="smack-game">
+        <div className="showBox">
+          <div className="lifes">
+            <img src={Life} alt="" />
+            <img src={Life} alt="" />
+            <img src={Life} alt="" />
+          </div>
+          <div className="score">{score}</div>
+          <div></div>
+          {/* <button className="dino-button" onClick={checkIfTop}>
+        Check
+      </button> */}
+        </div>
+        <div className="game"></div>
+      </div>
     </motion.section>
   );
 };
