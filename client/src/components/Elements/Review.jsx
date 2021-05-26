@@ -1,6 +1,6 @@
 import React from "react";
 import Dino from "../../img/Dino.jpg";
-import M_sweeper from "../../img/M-sweeper.png";
+import Movies from "../../img/Movies.gif";
 import Other from "../../img/Background.gif";
 
 const Review = ({ review }) => {
@@ -13,9 +13,7 @@ const Review = ({ review }) => {
       <div className="review-game">
         <div className="game-icon">
           {review.game === "dino" && <img src={Dino} alt="Dino" />}
-          {review.game === "m-sweeper" && (
-            <img src={M_sweeper} alt="M-sweeper" />
-          )}
+          {review.game === "m-sweeper" && <img src={Movies} alt="M-sweeper" />}
           {review.game === "other" && <img src={Other} alt="Other" />}
         </div>
       </div>

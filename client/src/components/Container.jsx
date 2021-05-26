@@ -2,7 +2,7 @@ import React, { createContext } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Main from "../components/Pages/Main";
 import Dino from "../components/Pages/Dino";
-import Msweeper from "../components/Pages/Msweeper";
+import Msweeper from "./Pages/Msweeper";
 import Top from "../components/Pages/Top";
 import Reviews from "../components/Pages/Reviews";
 import Faq from "../components/Faq";

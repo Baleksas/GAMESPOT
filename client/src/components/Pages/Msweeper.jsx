@@ -12,7 +12,6 @@ import { useDispatch } from "react-redux";
 const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
 
 const Msweeper = ({ name }) => {
-  console.log("name in m-sweeper: ", name);
   const dispatch = useDispatch();
   const tops = useSelector((state) => state.tops);
   const [movies, setMovies] = useState([]);
@@ -30,13 +29,6 @@ const Msweeper = ({ name }) => {
     maxScore: score,
     game: "m-sweeper",
   });
-  function usePrevious(value) {
-    const ref = useRef();
-    useEffect(() => {
-      ref.current = value;
-    });
-    return ref.current;
-  }
 
   useEffect(async () => {
     fetch(FEATURED_API)
@@ -47,17 +39,25 @@ const Msweeper = ({ name }) => {
         setRandomMovie(data.results[Math.floor(Math.random() * 20)]);
       });
   }, []);
-
+  useEffect(() => {
+    setTopData({ ...topData, maxScore: score });
+  }, [score]);
   const checkIfTop = () => {
     let nameExists = false;
     if (tops.length !== 0)
       for (var i = 0; i < tops.length; i++) {
-        if (topData.player === tops[i].player) nameExists = true;
+        if (topData.player === tops[i].player) {
+          nameExists = true;
+          console.log("NAME EXISTS");
+        }
         if (topData.maxScore > tops[i].maxScore) {
+          console.log("FOUND MAX SCORE");
           if (topData.player === tops[i].player) {
+            console.log("updating", topData, tops[i].player);
             dispatch(updateTop(tops[i]._id, topData));
             return;
           }
+          console.log("Creating", topData);
           dispatch(createTop(topData));
           return;
         }
@@ -67,11 +67,7 @@ const Msweeper = ({ name }) => {
   const compareGuess = () => {
     if (Math.abs(randomMovie.vote_average - guess) < 1) {
       // FIXME-Score is not changing properly, rendering problems
-      console.log("...", score);
       setScore(score + 1);
-      console.log("...", score);
-
-      setTopData({ ...topData, maxScore: score });
       setIsCorrect(true);
       checkIfTop();
     } else {
@@ -80,11 +76,13 @@ const Msweeper = ({ name }) => {
       setLifes(lifes);
     }
     if (lifes.length === 0) {
+      checkIfTop();
       setGameOver(true);
     }
     setAnswerWas(guess);
     setCorrectAnswerWas(randomMovie.vote_average);
     setRandomMovie(movies[Math.floor(Math.random() * 20)]);
+    console.log("END");
   };
   const playAgain = () => {
     setGameOver(false);

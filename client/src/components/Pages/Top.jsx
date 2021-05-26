@@ -6,7 +6,7 @@ import TopItem from "../Elements/TopItem";
 import { getTops, deleteTop } from "../../actions/tops";
 import { useDispatch } from "react-redux";
 import Dino from "../../img/Dino.jpg";
-import M_sweeper from "../../img/M-sweeper.png";
+import Movies from "../../img/Movies.gif";
 
 const Top = () => {
   const dispatch = useDispatch();
@@ -35,7 +35,6 @@ const Top = () => {
   };
   // FILTERS tops which will be shown and kept on a board
   const showDinoTops = tops.filter((top) => top.game === "dino").slice(0, 3);
-  console.log(showDinoTops);
   showDinoTops.forEach((top, index) => {
     top.place = index + 1;
   });
@@ -73,7 +72,7 @@ const Top = () => {
           showDinoTops.map((top) => <TopItem key={top._id} top={top} />)
         )}
         <div id="ms-img" className="tops-icon">
-          <img src={M_sweeper} alt="m-sweeper" />
+          <img src={Movies} alt="m-sweeper" />
         </div>
         {!showMsTops.length ? (
           <div className="loading-container-ms">

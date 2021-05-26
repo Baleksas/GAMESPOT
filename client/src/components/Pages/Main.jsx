@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Text from "../Text/Text.json";
-const Main = ({ setName }) => {
+const Main = ({ name, setName }) => {
   // console.log(Math.floor(Math.random() * Text.phrases.length));
-  const [termName, setTermName] = useState("");
+  const [termName, setTermName] = useState();
   const [hideMain, setHideMain] = useState(false);
   const confirmName = (e) => {
     e.preventDefault();
@@ -31,7 +31,6 @@ const Main = ({ setName }) => {
               onChange={(e) => setTermName(e.target.value)}
             />
             <input type="submit" value="DONE" />
-            {/*FIXME- Functionality for button */}
           </form>
           <button onClick={main_backscreen} className="no-name-btn">
             I WILL BE ALIEN INSTEAD
@@ -39,7 +38,8 @@ const Main = ({ setName }) => {
         </div>
       ) : (
         <div className="phrase">
-          {Text.phrases[Math.floor(Math.random() * Text.phrases.length)]}
+          <span>YOUR NAME IS: {name}</span>
+          <p>{Text.phrases[Math.floor(Math.random() * Text.phrases.length)]}</p>
         </div>
       )}
     </motion.section>
