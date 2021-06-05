@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Loading from "../Elements/Loading";
+
 const IMG_API = "https://image.tmdb.org/t/p/w300";
 
 const Movie = ({ randomMovie, setGuess, guess, compareGuess }) => {
+  console.log(randomMovie);
   const [inputGuess, setInputGuess] = useState(0);
   const makeGuess = () => {
     compareGuess();
@@ -27,6 +29,9 @@ const Movie = ({ randomMovie, setGuess, guess, compareGuess }) => {
                 onChange={(e) => setGuess(e.target.value)}
                 name="imdb"
                 type="number"
+                autoFocus
+                min="1"
+                max="10"
               />
               <button className="guess-btn" onClick={() => makeGuess()}>
                 GUESS

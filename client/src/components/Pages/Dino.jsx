@@ -4,8 +4,9 @@ import { useSelector } from "react-redux";
 import { createTop, updateTop } from "../../actions/tops";
 import { useDispatch } from "react-redux";
 import Life from "../../img/Life.png";
+import Rules from "./Rules";
 
-const Dino = ({ name }) => {
+const Dino = ({ name, readRules, setReadRules }) => {
   const dispatch = useDispatch();
   const tops = useSelector((state) => state.tops);
   const [score, setScore] = useState(0);
@@ -35,6 +36,18 @@ const Dino = ({ name }) => {
       }
     if (tops.length < 3 && !nameExists) dispatch(createTop(topData));
   };
+  console.log(readRules);
+  if (!readRules.includes("dino"))
+    return (
+      <motion.section
+        initial={{ scaleY: 0, scaleX: 0 }}
+        animate={{ scaleY: 1, scaleX: 1 }}
+        exit={{ scaleY: 0, scaleX: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <Rules setReadRules={setReadRules} readRules={readRules} game="dino" />
+      </motion.section>
+    );
   return (
     <motion.section
       initial={{ scaleY: 0, scaleX: 0 }}

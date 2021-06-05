@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Text from "../Text/Text.json";
+import Typing from "react-typing-animation";
+
 const Main = ({ name, setName }) => {
-  // console.log(Math.floor(Math.random() * Text.phrases.length));
   const [termName, setTermName] = useState();
   const [hideMain, setHideMain] = useState(false);
   const confirmName = (e) => {
@@ -38,8 +39,14 @@ const Main = ({ name, setName }) => {
         </div>
       ) : (
         <div className="phrase">
-          <span>YOUR NAME IS: {name}</span>
-          <p>{Text.phrases[Math.floor(Math.random() * Text.phrases.length)]}</p>
+          <span>
+            YOUR NAME IS: <span className="phrase-name">{name}</span>
+          </span>
+          <Typing speed={25}>
+            <p>
+              {Text.phrases[Math.floor(Math.random() * Text.phrases.length)]}
+            </p>
+          </Typing>
         </div>
       )}
     </motion.section>

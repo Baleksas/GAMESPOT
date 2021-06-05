@@ -8,11 +8,19 @@ import Footer from "./components/Footer";
 function App() {
   let random = Math.floor(Math.random() * 1000);
   const [name, setName] = useState(`ALIEN_${random}`);
-
+  const [readRules, setReadRules] = useState([]);
+  useEffect(() => {
+    console.log(readRules);
+  }, [readRules]);
   return (
     <div className="App">
       <Header />
-      <Container name={name} setName={setName} />
+      <Container
+        readRules={readRules}
+        setReadRules={setReadRules}
+        name={name}
+        setName={setName}
+      />
 
       <Footer />
     </div>

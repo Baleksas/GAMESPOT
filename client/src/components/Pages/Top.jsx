@@ -39,7 +39,7 @@ const Top = () => {
     top.place = index + 1;
   });
   sort(showDinoTops);
-  const showMsTops = tops.filter((top) => top.game === "m-sweeper").slice(0, 3);
+  const showMsTops = tops.filter((top) => top.game === "movies").slice(0, 3);
   showMsTops.forEach((top, index) => {
     top.place = index + 1;
   });
@@ -47,7 +47,7 @@ const Top = () => {
 
   // FILTERS tops which have to be deleted as they are not used or shown. It means that if you want to lock your progress, you have to make a record score.
   const deleteDinoTops = tops.filter((top) => top.game === "dino").slice(3);
-  const deleteMsTops = tops.filter((top) => top.game === "m-sweeper").slice(3);
+  const deleteMsTops = tops.filter((top) => top.game === "movies").slice(3);
 
   // Maps through unshown tops and deletes them from the database
   deleteDinoTops.map((topToDelete) => dispatch(deleteTop(topToDelete._id)));
@@ -72,7 +72,7 @@ const Top = () => {
           showDinoTops.map((top) => <TopItem key={top._id} top={top} />)
         )}
         <div id="ms-img" className="tops-icon">
-          <img src={Movies} alt="m-sweeper" />
+          <img src={Movies} alt="movies" />
         </div>
         {!showMsTops.length ? (
           <div className="loading-container-ms">

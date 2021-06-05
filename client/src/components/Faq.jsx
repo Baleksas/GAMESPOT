@@ -9,9 +9,9 @@ import Music from "../img/Sound.mp3";
 const Faq = () => {
   return (
     <>
-      <audio id="music" className="audio" loop autoPlay controls>
+      {/* <audio id="music" className="audio" loop autoPlay controls>
         <source src={Music} />
-      </audio>
+      </audio> */}
       <div id="FAQ" className="FAQ">
         <h2>FAQ</h2>
         <ul>
@@ -44,13 +44,14 @@ const Faq = () => {
           </li>
         </ul>
       </div>
+
       <button
         onClick={() => document.getElementById("FAQ").classList.toggle("show")}
         className="FAQ-link"
       >
         ?
       </button>
-      <button
+      {/* <button
         onClick={() => {
           if (document.getElementById("music").paused)
             document.getElementById("music").play();
@@ -59,7 +60,7 @@ const Faq = () => {
         className="play"
       >
         Music
-      </button>
+      </button> */}
     </>
   );
 };

@@ -7,7 +7,7 @@ import Loading from "../Elements/Loading";
 import { getReviews } from "../../actions/reviews";
 import { useDispatch } from "react-redux";
 
-const Reviews = () => {
+const Reviews = ({ name }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const Reviews = () => {
           ) : (
             reviews.map((review) => <Review key={review._id} review={review} />)
           )}
-          <Form />
+          <Form name={name} />
         </div>
       </div>
     </motion.section>

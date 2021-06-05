@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getTops } from "../actions/tops";
 import { useSelector } from "react-redux";
-
+import Text from "../components/Text/Text.json";
 const Footer = ({ text }) => {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -25,11 +25,14 @@ const Footer = ({ text }) => {
     case "/dino":
       FooterMessage = "Don't worry, your internet is fine...";
       break;
-    case "/m-sweeper":
-      FooterMessage = "Pretend it's a real life soldier!";
+    case "/movies":
+      FooterMessage =
+        Text["footer-movies"][
+          Math.floor(Math.random() * Text["footer-movies"].length)
+        ];
       break;
     case "/":
-      FooterMessage = "6#$%#$&451#$^6#5%&8789$#%$&";
+      FooterMessage = "@$%^%$&*&@#$%^O&(*^%#@!&^%#$%";
       break;
   }
   return (

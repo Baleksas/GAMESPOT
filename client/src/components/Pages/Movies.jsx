@@ -8,10 +8,11 @@ import Life from "../../img/Life.png";
 import { useSelector } from "react-redux";
 import { createTop, updateTop } from "../../actions/tops";
 import { useDispatch } from "react-redux";
+import Rules from "./Rules";
 
 const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
 
-const Msweeper = ({ name }) => {
+const Movies = ({ name, readRules, setReadRules }) => {
   const dispatch = useDispatch();
   const tops = useSelector((state) => state.tops);
   const [movies, setMovies] = useState([]);
@@ -27,7 +28,7 @@ const Msweeper = ({ name }) => {
   const [topData, setTopData] = useState({
     player: name,
     maxScore: score,
-    game: "m-sweeper",
+    game: "movies",
   });
 
   useEffect(async () => {
@@ -48,16 +49,12 @@ const Msweeper = ({ name }) => {
       for (var i = 0; i < tops.length; i++) {
         if (topData.player === tops[i].player) {
           nameExists = true;
-          console.log("NAME EXISTS");
         }
         if (topData.maxScore > tops[i].maxScore) {
-          console.log("FOUND MAX SCORE");
           if (topData.player === tops[i].player) {
-            console.log("updating", topData, tops[i].player);
             dispatch(updateTop(tops[i]._id, topData));
             return;
           }
-          console.log("Creating", topData);
           dispatch(createTop(topData));
           return;
         }
@@ -82,7 +79,6 @@ const Msweeper = ({ name }) => {
     setAnswerWas(guess);
     setCorrectAnswerWas(randomMovie.vote_average);
     setRandomMovie(movies[Math.floor(Math.random() * 20)]);
-    console.log("END");
   };
   const playAgain = () => {
     setGameOver(false);
@@ -90,6 +86,22 @@ const Msweeper = ({ name }) => {
     setScore(0);
   };
 
+  if (!readRules.includes("movies"))
+    return (
+      <motion.section
+        initial={{ scaleY: 0, scaleX: 0 }}
+        animate={{ scaleY: 1, scaleX: 1 }}
+        exit={{ scaleY: 0, scaleX: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        {" "}
+        <Rules
+          setReadRules={setReadRules}
+          readRules={readRules}
+          game="movies"
+        />
+      </motion.section>
+    );
   return (
     <motion.section
       initial={{ scaleY: 0, scaleX: 0 }}
@@ -106,11 +118,12 @@ const Msweeper = ({ name }) => {
             guess={guess}
           />
           <div className="movie-display">
-            <div>
+            <div className="lifes-div">
               {lifes.map((life) => (
                 <img key={life} src={Life} alt="" />
               ))}
             </div>
+
             <div>Score: {score}</div>
             <div className="indicator">
               {isCorrect ? (
@@ -119,12 +132,22 @@ const Msweeper = ({ name }) => {
                 <img src={AlienIncorrect} alt="NO" />
               )}
             </div>
-            <div>Your guess was: {answerWas}</div>
-            <div>Correct answer: {correctAnswerWas}</div>
+            <button>RULES</button>
+
+            {answerWas && (
+              <div>
+                Your guess was:<br></br> {answerWas}
+              </div>
+            )}
+            {correctAnswerWas && (
+              <div>
+                Correct answer:<br></br> {correctAnswerWas}
+              </div>
+            )}
           </div>
         </div>
       ) : (
-        <div>
+        <div className="game-over-div">
           <span>GAME OVER</span>
           <span>Your score: {score}</span>
           <button onClick={() => playAgain()}>PLAY AGAIN</button>
@@ -134,4 +157,4 @@ const Msweeper = ({ name }) => {
   );
 };
 
-export default Msweeper;
+export default Movies;

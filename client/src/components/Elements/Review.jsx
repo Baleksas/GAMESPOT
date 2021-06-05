@@ -13,7 +13,7 @@ const Review = ({ review }) => {
       <div className="review-game">
         <div className="game-icon">
           {review.game === "dino" && <img src={Dino} alt="Dino" />}
-          {review.game === "m-sweeper" && <img src={Movies} alt="M-sweeper" />}
+          {review.game === "movies" && <img src={Movies} alt="movies" />}
           {review.game === "other" && <img src={Other} alt="Other" />}
         </div>
       </div>

@@ -5,35 +5,19 @@ const Header = () => {
     <header id="header">
       <nav>
         <ul>
-          <li
-            className={`navItem ${
-              window.location.pathname === "/dino" ? "underlined" : ""
-            }`}
-          >
+          <li className={`navItem`}>
             <Link to="/dino">Dino</Link>
           </li>
-          <li
-            className={`navItem ${
-              window.location.pathname === "/m-sweeper" ? "underlined" : ""
-            }`}
-          >
-            <Link to="/m-sweeper">M-Sweeper</Link>
+          <li className={`navItem`}>
+            <Link to="/movies">Movies</Link>
           </li>
           <li id="title">
             <Link to="/">GAMESPOT</Link>
           </li>
-          <li
-            className={`navItem ${
-              window.location.pathname === "/reviews" ? "underlined" : ""
-            }`}
-          >
+          <li className={`navItem`}>
             <Link to="/reviews">Reviews</Link>
           </li>
-          <li
-            className={`navItem ${
-              window.location.pathname === "/top" ? "underlined" : ""
-            }`}
-          >
+          <li className={`navItem`}>
             <Link to="/top">Top</Link>
           </li>
         </ul>
