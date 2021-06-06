@@ -85,6 +85,9 @@ const Movies = ({ name, readRules, setReadRules }) => {
     setLifes([0, 1, 2]);
     setScore(0);
   };
+  const openRules = () => {
+    setReadRules(readRules.filter((game) => game !== "movies"));
+  };
 
   if (!readRules.includes("movies"))
     return (
@@ -94,7 +97,6 @@ const Movies = ({ name, readRules, setReadRules }) => {
         exit={{ scaleY: 0, scaleX: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {" "}
         <Rules
           setReadRules={setReadRules}
           readRules={readRules}
@@ -132,7 +134,9 @@ const Movies = ({ name, readRules, setReadRules }) => {
                 <img src={AlienIncorrect} alt="NO" />
               )}
             </div>
-            <button>RULES</button>
+            <button onClick={openRules} className="open-rules">
+              RULES
+            </button>
 
             {answerWas && (
               <div>

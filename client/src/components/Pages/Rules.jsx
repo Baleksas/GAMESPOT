@@ -1,33 +1,40 @@
 import React from "react";
+import Typing from "react-typing-animation";
 
 const Rules = ({ game, setReadRules, readRules }) => {
   const read = () => {
     setReadRules([...readRules, game]);
   };
   return (
-    <div>
+    <div className="rules">
       <div className="rules-container">
-        <h1>Rules</h1>
-        <ul>
-          <li>
+        <div>
+          <h1>Rules</h1>
+          <ul className="rules-ul">
+            <li>
+              {game === "movies"
+                ? "Try to guess IMDB of the described movie"
+                : "..."}
+            </li>
+            <li>
+              {game === "movies" ? "There is leverage of one score" : "..."}
+            </li>
+            <li>{game === "movies" ? "You have three lifes" : "..."}</li>
+          </ul>
+        </div>
+        <div>
+          <h1>Goal</h1>
+          <span>
+            {" "}
             {game === "movies"
-              ? "Try to guess IMDB of the described movie"
+              ? "Try to guess as many movies IMDB as you can"
               : "..."}
-          </li>
-          <li>
-            {game === "movies" ? "There is leverage of one score" : "..."}
-          </li>
-          <li>{game === "movies" ? "You have three lifes" : "..."}</li>
-        </ul>
-        <h2>Goal</h2>
-        <span>
-          {" "}
-          {game === "movies"
-            ? "Try to guess as many movies IMDB as you can"
-            : "..."}
-        </span>
+          </span>
+        </div>
       </div>
-      <button onClick={read}>GOT IT</button>
+      <button className="rules-btn" onClick={read}>
+        GOT IT
+      </button>
     </div>
   );
 };

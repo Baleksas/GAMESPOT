@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { createTop, updateTop } from "../../actions/tops";
@@ -6,15 +6,27 @@ import { useDispatch } from "react-redux";
 import Life from "../../img/Life.png";
 import Rules from "./Rules";
 
+const FEATURED_API = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_API_KEY2}`;
+
 const Dino = ({ name, readRules, setReadRules }) => {
   const dispatch = useDispatch();
   const tops = useSelector((state) => state.tops);
+  const [data, setData] = useState();
   const [score, setScore] = useState(0);
   const [topData, setTopData] = useState({
     player: name,
     maxScore: score,
     game: "dino",
   });
+  useEffect(async () => {
+    fetch(FEATURED_API)
+      .then((res) => res.json())
+      .catch((e) => console.log(e))
+      .then((data) => {
+        setData(data);
+        console.log(data);
+      });
+  }, []);
   const increment = () => {
     setScore(score + 1);
     setTopData({ ...topData, maxScore: score + 1 });
@@ -36,7 +48,6 @@ const Dino = ({ name, readRules, setReadRules }) => {
       }
     if (tops.length < 3 && !nameExists) dispatch(createTop(topData));
   };
-  console.log(readRules);
   if (!readRules.includes("dino"))
     return (
       <motion.section

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Loading from "../Elements/Loading";
 
-const IMG_API = "https://image.tmdb.org/t/p/w300";
+const IMG_API = "https://image.tmdb.org/t/p/w400";
 
 const Movie = ({ randomMovie, setGuess, guess, compareGuess }) => {
-  console.log(randomMovie);
   const [inputGuess, setInputGuess] = useState(0);
   const makeGuess = () => {
     compareGuess();

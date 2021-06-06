@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const url = "http://localhost:5000/reviews";
-const url_top = "http://localhost:5000/top";
+const url = "https://game-spot-project.herokuapp.com/reviews";
+const url_top = "https://game-spot-project.herokuapp.com/top";
 
 export const fetchReviews = () => axios.get(url);
 
