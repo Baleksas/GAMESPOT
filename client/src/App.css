@@ -93,6 +93,7 @@ header li a {
   right: 20px;
   font-size: 50px;
   color: white;
+  z-index: 100;
 }
 .play {
   position: absolute;
@@ -103,16 +104,19 @@ header li a {
 }
 .FAQ {
   position: absolute;
-  z-index: 2;
-  bottom: 20px;
-  right: 100px;
+  bottom: 1em;
+  right: 5em;
   text-align: center;
   padding: 10px 15px;
   background-color: rgba(180, 77, 77, 0.8);
   width: 200px;
-  height: 300px;
-  display: none;
+  height: 200px;
+  opacity: 0;
+  transition: all 200ms ease-in-out;
   border: 3px solid white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .FAQ ul {
@@ -137,8 +141,8 @@ header li a {
   justify-content: space-around;
 }
 .show {
-  display: flex;
-  flex-direction: column;
+  opacity: 1;
+  z-index: 2;
 }
 /* CONTAINER */
 .container {
@@ -433,8 +437,8 @@ select {
 /* Movies */
 .ms-game {
   display: flex;
-  width: 80%;
-  height: 80%;
+  width: 90%;
+  height: 95%;
   align-items: center;
   justify-content: space-around;
   margin: auto;
@@ -457,7 +461,8 @@ select {
 .guess {
   display: flex;
 }
-.guess-btn {
+.guess-btn,
+.change-btn {
   background-color: white;
   padding: 10px 15px;
 }
@@ -469,7 +474,8 @@ select {
   font-size: 1em;
 }
 
-.guess-btn:hover {
+.guess-btn:hover,
+.change-btn:hover {
   opacity: 0.8;
 }
 .indicator img {
@@ -510,7 +516,7 @@ footer img {
 .lifes-div {
   display: flex;
   position: absolute;
-  width: max-content;
+  width: 250px;
   top: 0px;
   right: 0px;
   justify-content: space-between;

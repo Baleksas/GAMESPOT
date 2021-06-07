@@ -4,14 +4,9 @@ import Github from "../img/Github.png";
 import LinkedIn from "../img/li.png";
 import Skull from "../img/Skull.png";
 
-import Music from "../img/Sound.mp3";
-
 const Faq = () => {
   return (
     <>
-      {/* <audio id="music" className="audio" loop autoPlay controls>
-        <source src={Music} />
-      </audio> */}
       <div id="FAQ" className="FAQ">
         <h2>FAQ</h2>
         <ul>
@@ -51,16 +46,6 @@ const Faq = () => {
       >
         ?
       </button>
-      {/* <button
-        onClick={() => {
-          if (document.getElementById("music").paused)
-            document.getElementById("music").play();
-          else document.getElementById("music").pause();
-        }}
-        className="play"
-      >
-        Music
-      </button> */}
     </>
   );
 };

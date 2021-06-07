@@ -1,16 +1,16 @@
-import React, { createContext } from "react";
+import React, { useState, createContext } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Main from "../components/Pages/Main";
 import Dino from "../components/Pages/Dino";
 import Movies from "./Pages/Movies";
 import Top from "../components/Pages/Top";
 import Reviews from "../components/Pages/Reviews";
-import Faq from "../components/Faq";
 import { AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
 
 const Container = ({ readRules, setReadRules, name, setName }) => {
   const location = useLocation();
+  const [hideMain, setHideMain] = useState(false);
 
   return (
     <>
@@ -18,7 +18,12 @@ const Container = ({ readRules, setReadRules, name, setName }) => {
         <AnimatePresence exitBeforeEnter initial={false}>
           <Switch location={location} key={location.pathname}>
             <Route exact path="/">
-              <Main name={name} setName={setName} />
+              <Main
+                hideMain={hideMain}
+                setHideMain={setHideMain}
+                name={name}
+                setName={setName}
+              />
             </Route>
             <Route path="/dino">
               <Dino
@@ -42,7 +47,6 @@ const Container = ({ readRules, setReadRules, name, setName }) => {
             </Route>
           </Switch>
         </AnimatePresence>
-        <Faq />
       </div>
     </>
   );

@@ -13,7 +13,9 @@ app.use(express.urlencoded({ limit: "30mb", extended: true })); // for parsing a
 app.use(cors());
 
 app.use("/", Routes);
-
+app.get("/", (req, res) => {
+  res.send("hello to gamespot");
+});
 const PORT = process.env.PORT || 5000;
 
 mongoose

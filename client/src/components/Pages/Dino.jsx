@@ -24,7 +24,6 @@ const Dino = ({ name, readRules, setReadRules }) => {
       .catch((e) => console.log(e))
       .then((data) => {
         setData(data);
-        console.log(data);
       });
   }, []);
   const increment = () => {

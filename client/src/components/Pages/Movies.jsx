@@ -24,7 +24,6 @@ const Movies = ({ name, readRules, setReadRules }) => {
   const [answerWas, setAnswerWas] = useState();
   const [correctAnswerWas, setCorrectAnswerWas] = useState();
   const [gameOver, setGameOver] = useState(false);
-
   const [topData, setTopData] = useState({
     player: name,
     maxScore: score,
@@ -63,7 +62,6 @@ const Movies = ({ name, readRules, setReadRules }) => {
   };
   const compareGuess = () => {
     if (Math.abs(randomMovie.vote_average - guess) < 1) {
-      // FIXME-Score is not changing properly, rendering problems
       setScore(score + 1);
       setIsCorrect(true);
       checkIfTop();

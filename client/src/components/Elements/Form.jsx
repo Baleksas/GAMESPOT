@@ -1,20 +1,36 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createReview } from "../../actions/reviews";
+import { CensorSensor } from "censor-sensor";
+
 const Form = ({ name }) => {
   const dispatch = useDispatch();
+  const censor = new CensorSensor();
   const [reviewData, setReviewData] = useState({
     author: name,
     message: "",
     game: "dino",
     maxScore: 0,
   });
+  const checkIfAppropriate = (reviewData) => {
+    if (reviewData.message === "") {
+      alert("Too short");
+      return true;
+    }
 
+    if (censor.isProfane(reviewData.message)) {
+      alert(`Don't!`);
+      return true;
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (checkIfAppropriate(reviewData)) {
+      setReviewData({ ...reviewData, message: "" });
+      return;
+    }
     dispatch(createReview(reviewData));
     // Clearing form
-
     setReviewData({
       author: name,
       message: "",

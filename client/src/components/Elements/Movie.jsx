@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Loading from "../Elements/Loading";
 
-const IMG_API = "https://image.tmdb.org/t/p/w400";
+const IMG_API = "https://image.tmdb.org/t/p/w300";
 
 const Movie = ({ randomMovie, setGuess, guess, compareGuess }) => {
   const [inputGuess, setInputGuess] = useState(0);
