@@ -9,9 +9,7 @@ function App() {
   let random = Math.floor(Math.random() * 1000);
   const [name, setName] = useState(`ALIEN_${random}`);
   const [readRules, setReadRules] = useState([]);
-  useEffect(() => {
-    console.log(readRules);
-  }, [readRules]);
+  useEffect(() => {}, [readRules]);
   return (
     <div className="App">
       <Header />

@@ -117,13 +117,12 @@ const Movies = ({ name, readRules, setReadRules }) => {
             setGuess={setGuess}
             guess={guess}
           />
+          <div className="lifes-div">
+            {lifes.map((life) => (
+              <img key={life} src={Life} alt="" />
+            ))}
+          </div>
           <div className="movie-display">
-            <div className="lifes-div">
-              {lifes.map((life) => (
-                <img key={life} src={Life} alt="" />
-              ))}
-            </div>
-
             <div>Score: {score}</div>
             <div className="indicator">
               {isCorrect ? (
@@ -132,10 +131,6 @@ const Movies = ({ name, readRules, setReadRules }) => {
                 <img src={AlienIncorrect} alt="NO" />
               )}
             </div>
-            <button onClick={openRules} className="open-rules">
-              RULES
-            </button>
-
             {answerWas && (
               <div>
                 Your guess was:<br></br> {answerWas}
@@ -146,13 +141,18 @@ const Movies = ({ name, readRules, setReadRules }) => {
                 Correct answer:<br></br> {correctAnswerWas}
               </div>
             )}
+            <button onClick={openRules} className="open-rules">
+              RULES
+            </button>
           </div>
         </div>
       ) : (
         <div className="game-over-div">
           <span>GAME OVER</span>
           <span>Your score: {score}</span>
-          <button onClick={() => playAgain()}>PLAY AGAIN</button>
+          <button className="play-again-btn" onClick={() => playAgain()}>
+            PLAY AGAIN
+          </button>
         </div>
       )}
     </motion.section>

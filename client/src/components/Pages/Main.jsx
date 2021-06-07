@@ -26,6 +26,7 @@ const Main = ({ name, setName, hideMain, setHideMain }) => {
     let random = Math.floor(Math.random() * 1000);
     setName(`ALIEN_${random}`);
     setHideMain(true);
+    setTermName("");
   };
   return (
     <motion.section

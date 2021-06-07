@@ -31,16 +31,56 @@ button {
   cursor: pointer;
 }
 /* HEADER */
-header {
+header,
+.burger {
   min-height: var(--large-hf);
   background-color: white;
   display: flex;
 }
+
+.mobile-header {
+  display: none;
+  background: radial-gradient(
+    circle at top,
+    rgba(157, 240, 169, 1) 0%,
+    rgba(255, 255, 255, 0) 90%
+  );
+}
+.mobile-header a {
+  color: rgb(255, 255, 255);
+}
+.mobile-header ul {
+  height: 10em;
+  width: max-content;
+  justify-content: space-around;
+  margin: auto;
+}
+.mobile-header nav {
+  width: max-content;
+}
+.mobile-show {
+  display: block;
+  position: absolute;
+  z-index: 10;
+  top: 59px;
+  width: max-content;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.mobile-show ul {
+  display: flex;
+  flex-direction: column;
+}
+.burger {
+  display: none;
+  align-self: center;
+}
+
 section {
   background: linear-gradient(
     45deg,
-    rgba(255, 255, 255, 0.4),
-    rgba(0, 0, 0, 0.8)
+    rgba(0, 0, 0, 0.8),
+    rgba(255, 255, 255, 0.4)
   );
   position: relative;
   border: 1px solid white;
@@ -83,9 +123,7 @@ header li a {
 #title a {
   color: rgb(180, 77, 77);
 }
-.navItem a:focus {
-  border-bottom: 5px solid black;
-}
+
 /* FAQ */
 .FAQ-link {
   position: absolute;
@@ -117,6 +155,7 @@ header li a {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  z-index: -1;
 }
 
 .FAQ ul {
@@ -256,6 +295,23 @@ footer {
 .review-text {
   flex: 1;
 }
+.review-text input {
+  width: 100%;
+}
+.review-text form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.gamespot-vertical {
+  writing-mode: vertical-rl;
+  margin-right: 0.5em;
+}
+.gamespot-vertical a {
+  color: rgb(180, 77, 77);
+}
+
 .review-game {
   display: flex;
   flex-direction: column;
@@ -350,6 +406,11 @@ select {
   grid-column-start: 1;
   grid-row-start: 1;
 }
+#ms-img img,
+#dino-img img {
+  width: 80px;
+  height: auto;
+}
 .tops-icon {
   height: 100%;
   width: 100%;
@@ -410,15 +471,19 @@ select {
 }
 .no-name-btn,
 .rules-btn,
-.open-rules {
+.open-rules,
+.play-again-btn {
   padding: 1em;
   background-color: white;
+  margin: 1em;
 }
 .no-name-btn:hover,
 .rules-btn:hover,
-.open-rules:hover {
+.open-rules:hover,
+.play-again-btn:hover {
   opacity: 0.8;
 }
+
 .phrase {
   margin: auto;
   width: 90%;
@@ -555,10 +620,87 @@ footer img {
 }
 .rules {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 .rules-ul li {
   list-style: disc;
+}
+/* MEDIA QUERIES */
+@media only screen and (max-width: 800px) {
+  section {
+    height: max-content;
+    min-height: 90%;
+    padding-top: 0;
+    margin: auto;
+  }
+  .example1 h3 {
+    width: max-content;
+  }
+  #header {
+    display: none;
+  }
+
+  .ms-game {
+    flex-direction: column;
+    position: relative;
+    margin: 0;
+    align-self: center;
+    width: 100%;
+  }
+  .container {
+    overflow-y: scroll;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+  .movie-overview {
+    width: 90%;
+  }
+  .movie-date {
+    margin: 2em 0;
+  }
+  .lifes-div {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    border-left: none;
+  }
+  .poster {
+    margin: 6em 0;
+  }
+  .movie-info {
+    text-align: center;
+    margin-bottom: 6em;
+    align-items: center;
+  }
+  .guess {
+    margin-top: 3em;
+  }
+  .top {
+    display: flex;
+    flex-direction: column;
+  }
+  .movie-display {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  input[type="text"] {
+    max-width: 80vw;
+  }
+  .burger {
+    display: block;
+    display: flex;
+    align-items: center;
+    width: max-content;
+  }
+
+  .burger div {
+    align-self: center;
+  }
+  .burger img {
+    height: 50px;
+  }
 }
