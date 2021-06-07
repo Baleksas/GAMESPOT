@@ -27,7 +27,7 @@ const Top = () => {
   const sort = (array) => {
     for (var i = 0; i < array.length; i++) {
       for (var j = 0; j < array.length; j++) {
-        if (array[i].maxScore > array[j].maxScore) {
+        if (array[i].place < array[j].place) {
           [array[i], array[j]] = [array[j], array[i]];
         }
       }

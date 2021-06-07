@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import Movie from "../Elements/Movie";
 import AlienCorrect from "../../img/AlienIconCorrect.png";
 import AlienIncorrect from "../../img/AlienIconIncorrect.png";
-import AlienIcon from "../../img/AlienIcon.png";
 import Life from "../../img/Life.png";
 import { useSelector } from "react-redux";
 import { createTop, updateTop } from "../../actions/tops";
