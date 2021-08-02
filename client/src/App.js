@@ -6,7 +6,7 @@ import Container from "./components/Container";
 import Footer from "./components/Footer";
 
 function App() {
-  let random = Math.floor(Math.random() * 1000);
+  let random = Math.floor(Math.random() * 100);
   const [name, setName] = useState(`ALIEN_${random}`);
   const [readRules, setReadRules] = useState([]);
   useEffect(() => {}, [readRules]);
@@ -19,7 +19,6 @@ function App() {
         name={name}
         setName={setName}
       />
-
       <Footer />
     </div>
   );

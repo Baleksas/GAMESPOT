@@ -4,26 +4,42 @@ import Text from "../Text/Text.json";
 import Typing from "react-typing-animation";
 import { CensorSensor } from "censor-sensor";
 import Faq from "../../components/Faq";
+import AlertBox from "../Elements/AlertBox";
 const Main = ({ name, setName, hideMain, setHideMain }) => {
   const [termName, setTermName] = useState();
+  const [inputError, setInputError] = useState();
+  const [showAlert, setShowAlert] = useState(false);
   const censor = new CensorSensor();
-
-  const confirmName = (e) => {
-    e.preventDefault();
+  const checkIfAppropriate = (termName) => {
     if (termName === "" || termName === undefined) {
-      alert("INVALID");
-      return;
+      setInputError("Too short!");
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 1000);
+      return true;
     }
     if (censor.isProfane(termName)) {
-      alert(`It's either bad word or bug. Sorry!`);
+      setInputError("Bad word!");
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 1000);
+      return true;
+    }
+  };
+  const confirmName = (e) => {
+    e.preventDefault();
+    if (checkIfAppropriate(termName)) {
       setTermName("");
       return;
     }
+
     setName(termName);
     setHideMain(true);
   };
   const main_backscreen = () => {
-    let random = Math.floor(Math.random() * 1000);
+    let random = Math.floor(Math.random() * 100);
     setName(`ALIEN_${random}`);
     setHideMain(true);
     setTermName("");
@@ -46,6 +62,7 @@ const Main = ({ name, setName, hideMain, setHideMain }) => {
               value={termName}
               onChange={(e) => setTermName(e.target.value)}
             />
+            <AlertBox type="name-alert" error={inputError} show={showAlert} />
             <input type="submit" value="DONE" />
           </form>
           <button onClick={main_backscreen} className="no-name-btn">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { createTop, updateTop } from "../../actions/tops";
@@ -7,13 +7,14 @@ import Life from "../../img/Life.png";
 import Rules from "./Rules";
 import AlienCorrect from "../../img/AlienIconCorrect.png";
 import AlienIncorrect from "../../img/AlienIconIncorrect.png";
-const FEATURED_API = ``;
+const FEATURED_API = `https://opentdb.com/api.php?amount=50&category=18&type=multiple`;
 
 const Dino = ({ name, readRules, setReadRules }) => {
   const dispatch = useDispatch();
   const tops = useSelector((state) => state.tops);
   const [data, setData] = useState();
   const [score, setScore] = useState(0);
+  const [randomQuestion, setRandomQuestion] = useState();
   const [guess, setGuess] = useState(0);
   const [isCorrect, setIsCorrect] = useState();
   const [answerWas, setAnswerWas] = useState();
@@ -32,9 +33,12 @@ const Dino = ({ name, readRules, setReadRules }) => {
       .catch((e) => console.log(e))
       .then((data) => {
         setData(data);
-        console.log(data);
+        setRandomQuestion(data.results[Math.floor(Math.random() * 50)]);
       });
   }, []);
+  useEffect(() => {
+    setTopData({ ...topData, maxScore: score });
+  }, [score]);
   const playAgain = () => {
     setGameOver(false);
     setLifes([0, 1, 2]);
@@ -43,24 +47,25 @@ const Dino = ({ name, readRules, setReadRules }) => {
   const openRules = () => {
     setReadRules(readRules.filter((game) => game !== "dino"));
   };
-
-  const compareGuess = () => {
-    // if (Math.abs(randomMovie.vote_average - guess) < 1) {
-    //   setScore(score + 1);
-    //   setIsCorrect(true);
-    //   checkIfTop();
-    // } else {
-    //   setIsCorrect(false);
-    //   lifes.pop();
-    //   setLifes(lifes);
-    // }
-    // if (lifes.length === 0) {
-    //   checkIfTop();
-    //   setGameOver(true);
-    // }
-    // setAnswerWas(guess);
-    // setCorrectAnswerWas(randomMovie.vote_average);
-    // setRandomMovie(movies[Math.floor(Math.random() * 20)]);
+  const compareGuess = (choice, index) => {
+    if (choice) {
+      console.log("CORRECT");
+      setScore(score + 1);
+      setIsCorrect(true);
+      checkIfTop();
+    } else {
+      console.log("NOT CORRECT");
+      setIsCorrect(false);
+      lifes.pop();
+      setLifes(lifes);
+    }
+    if (lifes.length === 0) {
+      checkIfTop();
+      setGameOver(true);
+    }
+    setAnswerWas(randomQuestion.incorrect_answers[index]);
+    setCorrectAnswerWas(randomQuestion.correct_answer);
+    setRandomQuestion(data.results[Math.floor(Math.random() * 50)]);
   };
   const checkIfTop = () => {
     let nameExists = false;
@@ -97,13 +102,27 @@ const Dino = ({ name, readRules, setReadRules }) => {
       transition={{ duration: 0.5 }}
     >
       {!gameOver ? (
-        <div className="ms-game">
-          {/* <Movie
-            randomMovie={randomMovie}
-            compareGuess={compareGuess}
-            setGuess={setGuess}
-            guess={guess}
-          /> */}
+        <div className="dino-game">
+          <div>{randomQuestion.question}</div>
+          <div className="answers">
+            <button
+              onClick={() => compareGuess(true)}
+              style={{ order: Math.floor(Math.random() * 4), color: "red" }}
+              className="guess-btn game-1-button"
+            >
+              {randomQuestion.correct_answer}
+            </button>
+            {randomQuestion.incorrect_answers.map((answer, index) => (
+              <button
+                onClick={() => compareGuess(false, index)}
+                style={{ order: Math.floor(Math.random() * 4), color: "green" }}
+                className="guess-btn game-1-button"
+              >
+                {answer}
+              </button>
+            ))}
+          </div>
+
           <div className="lifes-div">
             {lifes.map((life) => (
               <img key={life} src={Life} alt="" />

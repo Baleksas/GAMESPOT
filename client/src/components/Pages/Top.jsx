@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import Loading from "../Elements/Loading";

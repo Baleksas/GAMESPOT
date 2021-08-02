@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createReview } from "../../actions/reviews";
 import { CensorSensor } from "censor-sensor";
+import AlertBox from "./AlertBox";
 
 const Form = ({ name }) => {
   const dispatch = useDispatch();
   const censor = new CensorSensor();
+  const [inputError, setInputError] = useState();
+  const [showAlert, setShowAlert] = useState(false);
   const [reviewData, setReviewData] = useState({
     author: name,
     message: "",
@@ -13,13 +16,21 @@ const Form = ({ name }) => {
     maxScore: 0,
   });
   const checkIfAppropriate = (reviewData) => {
-    if (reviewData.message === "") {
-      alert("Too short");
+    if (reviewData.message === "" || reviewData.message === undefined) {
+      setInputError("Too short!");
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 1000);
       return true;
     }
 
     if (censor.isProfane(reviewData.message)) {
-      alert(`Don't!`);
+      setInputError("Bad word!");
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 1000);
       return true;
     }
   };
@@ -52,7 +63,6 @@ const Form = ({ name }) => {
             type="text"
             placeholder="message"
           />
-
           <select
             value={reviewData.game}
             onChange={(e) =>
@@ -68,6 +78,7 @@ const Form = ({ name }) => {
           <input type="submit" value="DONE" />
         </form>
       </div>
+      <AlertBox type="review-alert" error={inputError} show={showAlert} />
     </div>
   );
 };

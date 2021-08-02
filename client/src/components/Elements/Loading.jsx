@@ -4,7 +4,7 @@ const Loading = () => {
   const [notFound, setNotFound] = useState(false);
   setTimeout(() => {
     setNotFound(true);
-  }, 3000);
+  }, 5000);
 
   return !notFound ? (
     <div className="loading">
