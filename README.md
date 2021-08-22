@@ -8,7 +8,7 @@ A Portfolio project of Aleksas Bagdonas
 4. Node
 
 ### License
-**GAMESPOT** is licenced under [GPL v3.0 license](https://www.gnu.org/licenses/gpl-3.0.en.html)
+**GAMESPOT** is licenced under [The MIT License](https://opensource.org/licenses/MIT)
 
 ### Contact
 
