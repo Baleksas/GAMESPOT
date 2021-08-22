@@ -14,12 +14,14 @@ const Rules = ({ game, setReadRules, readRules }) => {
             <li>
               {game === "movies"
                 ? "Try to guess IMDB of the described movie"
-                : "..."}
+                : "Try to guess the right answer"}
             </li>
             <li>
-              {game === "movies" ? "There is leverage of one score" : "..."}
+              {game === "movies"
+                ? "There is leverage of one score"
+                : "You will see the right answer below after each question"}
             </li>
-            <li>{game === "movies" ? "You have three lifes" : "..."}</li>
+            <li>You have three lifes</li>
           </ul>
         </div>
         <div>
@@ -28,7 +30,7 @@ const Rules = ({ game, setReadRules, readRules }) => {
             {" "}
             {game === "movies"
               ? "Try to guess as many movies IMDB as you can"
-              : "..."}
+              : "Try to get as many points as you can"}
           </span>
         </div>
       </div>

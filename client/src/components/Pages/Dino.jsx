@@ -7,6 +7,7 @@ import Life from "../../img/Life.png";
 import Rules from "./Rules";
 import AlienCorrect from "../../img/AlienIconCorrect.png";
 import AlienIncorrect from "../../img/AlienIconIncorrect.png";
+import GameOne from "../Elements/GameOne";
 const FEATURED_API = `https://opentdb.com/api.php?amount=50&category=18&type=multiple`;
 
 const Dino = ({ name, readRules, setReadRules }) => {
@@ -15,7 +16,7 @@ const Dino = ({ name, readRules, setReadRules }) => {
   const [data, setData] = useState();
   const [score, setScore] = useState(0);
   const [randomQuestion, setRandomQuestion] = useState();
-  const [guess, setGuess] = useState(0);
+
   const [isCorrect, setIsCorrect] = useState();
   const [answerWas, setAnswerWas] = useState();
   const [correctAnswerWas, setCorrectAnswerWas] = useState();
@@ -75,6 +76,7 @@ const Dino = ({ name, readRules, setReadRules }) => {
         if (topData.maxScore > tops[i].maxScore) {
           if (topData.player === tops[i].player) {
             dispatch(updateTop(tops[i]._id, topData));
+            console.log("NAME IS SAME. UPDATED. ", topData.player);
             return;
           }
           dispatch(createTop(topData));
@@ -83,6 +85,7 @@ const Dino = ({ name, readRules, setReadRules }) => {
       }
     if (tops.length < 3 && !nameExists) dispatch(createTop(topData));
   };
+
   if (!readRules.includes("dino"))
     return (
       <motion.section
@@ -103,25 +106,10 @@ const Dino = ({ name, readRules, setReadRules }) => {
     >
       {!gameOver ? (
         <div className="dino-game">
-          <div>{randomQuestion.question}</div>
-          <div className="answers">
-            <button
-              onClick={() => compareGuess(true)}
-              style={{ order: Math.floor(Math.random() * 4), color: "red" }}
-              className="guess-btn game-1-button"
-            >
-              {randomQuestion.correct_answer}
-            </button>
-            {randomQuestion.incorrect_answers.map((answer, index) => (
-              <button
-                onClick={() => compareGuess(false, index)}
-                style={{ order: Math.floor(Math.random() * 4), color: "green" }}
-                className="guess-btn game-1-button"
-              >
-                {answer}
-              </button>
-            ))}
-          </div>
+          <GameOne
+            randomQuestion={randomQuestion}
+            compareGuess={compareGuess}
+          />
 
           <div className="lifes-div">
             {lifes.map((life) => (

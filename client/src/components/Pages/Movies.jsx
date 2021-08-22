@@ -51,6 +51,7 @@ const Movies = ({ name, readRules, setReadRules }) => {
         if (topData.maxScore > tops[i].maxScore) {
           if (topData.player === tops[i].player) {
             dispatch(updateTop(tops[i]._id, topData));
+            console.log("NAME IS SAME. UPDATED. ", topData.player);
             return;
           }
           dispatch(createTop(topData));

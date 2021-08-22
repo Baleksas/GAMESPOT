@@ -295,6 +295,9 @@ footer {
   display: flex;
   position: relative;
 }
+.top-item span {
+  margin: 0 0.5em;
+}
 .review-text {
   flex: 1;
 }
