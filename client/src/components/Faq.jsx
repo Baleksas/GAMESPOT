@@ -24,10 +24,10 @@ const Faq = () => {
           </li>
           <li className="faq-li">
             <h5> WHEN</h5>
-            <span>2021/may</span>
+            <span>20/21</span>
           </li>
           <li className="faq-li links">
-            <a target="_blank" href="https://github.com/MrForIf">
+            <a target="_blank" href="https://github.com/Baleksas">
               <img src={Github} alt="Github" />
             </a>
             <a

@@ -70,9 +70,16 @@ const Dino = ({ name, readRules, setReadRules }) => {
   };
   const checkIfTop = () => {
     let nameExists = false;
+    console.log("tops length:", tops.length);
     if (tops.length !== 0)
       for (var i = 0; i < tops.length; i++) {
-        if (topData.player === tops[i].player) nameExists = true;
+        if (
+          topData.player === tops[i].player &&
+          topData.game === tops[i].game
+        ) {
+          nameExists = true;
+          console.log("name exists:", tops[i].player);
+        }
         if (topData.maxScore > tops[i].maxScore) {
           if (topData.player === tops[i].player) {
             dispatch(updateTop(tops[i]._id, topData));
@@ -80,10 +87,14 @@ const Dino = ({ name, readRules, setReadRules }) => {
             return;
           }
           dispatch(createTop(topData));
+          console.log("New top of csquiz created:", topData);
           return;
         }
       }
-    if (tops.length < 3 && !nameExists) dispatch(createTop(topData));
+    if (tops.length < 3 && !nameExists && topData.maxScore !== 0) {
+      dispatch(createTop(topData));
+      console.log("New top of csquiz created:", topData);
+    }
   };
 
   if (!readRules.includes("dino"))

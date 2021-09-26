@@ -45,10 +45,13 @@ const Movies = ({ name, readRules, setReadRules }) => {
     let nameExists = false;
     if (tops.length !== 0)
       for (var i = 0; i < tops.length; i++) {
-        if (topData.player === tops[i].player) {
+        if (topData.player === tops[i].player && topData.game === tops[i].game)
           nameExists = true;
-        }
-        if (topData.maxScore > tops[i].maxScore) {
+
+        if (
+          topData.maxScore > tops[i].maxScore &&
+          topData.game === tops[i].game
+        ) {
           if (topData.player === tops[i].player) {
             dispatch(updateTop(tops[i]._id, topData));
             console.log("NAME IS SAME. UPDATED. ", topData.player);
@@ -58,7 +61,8 @@ const Movies = ({ name, readRules, setReadRules }) => {
           return;
         }
       }
-    if (tops.length < 3 && !nameExists) dispatch(createTop(topData));
+    if (tops.length < 3 && !nameExists && topData.maxScore !== 0)
+      dispatch(createTop(topData));
   };
   const compareGuess = () => {
     if (Math.abs(randomMovie.vote_average - guess) < 1) {

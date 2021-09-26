@@ -5,7 +5,7 @@ import Loading from "../Elements/Loading";
 import TopItem from "../Elements/TopItem";
 import { getTops, deleteTop } from "../../actions/tops";
 import { useDispatch } from "react-redux";
-import Dino from "../../img/Dino.jpg";
+import Dino from "../../img/Dino.gif";
 import Movies from "../../img/Movies.gif";
 
 const Top = () => {

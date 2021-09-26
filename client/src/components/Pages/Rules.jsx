@@ -21,12 +21,12 @@ const Rules = ({ game, setReadRules, readRules }) => {
                 ? "There is leverage of one score"
                 : "You will see the right answer below after each question"}
             </li>
-            <li>You have three lifes</li>
+            <li>You have 3 lifes</li>
           </ul>
         </div>
         <div>
           <h1>Goal</h1>
-          <span>
+          <span className="goal">
             {" "}
             {game === "movies"
               ? "Try to guess as many movies IMDB as you can"

@@ -398,7 +398,7 @@ footer {
   grid-template-rows: repeat(2, 50%);
   align-items: center;
 }
-.movies-game {
+.movies-game-top {
   grid-row-start: 2;
 }
 .loading-container-dino {
@@ -417,7 +417,7 @@ footer {
 }
 #ms-img img,
 #dino-img img {
-  width: 80px;
+  width: 100px;
   height: auto;
 }
 .tops-icon {
@@ -530,6 +530,9 @@ footer {
   flex-direction: column;
   justify-content: space-between;
 }
+.movie-title {
+  margin-bottom: 1em;
+}
 .poster {
   flex: 1;
 }
@@ -594,8 +597,9 @@ footer img {
 }
 .lifes-div {
   display: flex;
+  flex-direction: column;
   position: absolute;
-  width: 250px;
+  width: 100px;
   top: 0px;
   right: 0px;
   justify-content: space-between;
@@ -642,6 +646,11 @@ footer img {
 }
 .rules-ul li {
   list-style: disc;
+}
+.goal {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  font-size: 1.3;
 }
 /* ALERT BOX */
 .alert-box {
@@ -720,6 +729,7 @@ footer img {
   .lifes-div {
     width: 100%;
     position: absolute;
+    flex-direction: row;
     top: 0;
     border-left: none;
   }
