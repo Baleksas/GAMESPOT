@@ -53,7 +53,7 @@ const Main = ({ name, setName, hideMain, setHideMain }) => {
     >
       {hideMain === false ? (
         <div id="choose" className="main-choose">
-          <form onSubmit={confirmName}>
+          <form className="name-form" onSubmit={confirmName}>
             <label htmlFor="nick">Choose your name</label>
             <input
               id="nick"
@@ -66,7 +66,7 @@ const Main = ({ name, setName, hideMain, setHideMain }) => {
             <input type="submit" value="DONE" />
           </form>
           <button onClick={main_backscreen} className="no-name-btn">
-            I WILL BE ALIEN INSTEAD
+            I WILL BE AN ALIEN INSTEAD
           </button>
         </div>
       ) : (

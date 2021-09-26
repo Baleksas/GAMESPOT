@@ -18,7 +18,7 @@ const Rules = ({ game, setReadRules, readRules }) => {
             </li>
             <li>
               {game === "movies"
-                ? "There is leverage of one score"
+                ? "Inaccuracy: more than 1 = -1 life; 0.5-1 = 1+; 0.2-0.5 = +2; Bullzye (0) = +5"
                 : "You will see the right answer below after each question"}
             </li>
             <li>You have 3 lifes</li>

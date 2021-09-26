@@ -8,6 +8,15 @@ const Faq = () => {
   return (
     <>
       <div id="FAQ" className="FAQ">
+        <div className="extra_info">
+          <p>
+            This full-stack application is censored with
+            <i>
+              <b> Censor-Sensor </b>
+            </i>
+            library
+          </p>
+        </div>
         <h2>FAQ</h2>
         <ul>
           <li className="faq-li">
@@ -16,11 +25,11 @@ const Faq = () => {
           </li>
           <li className="faq-li">
             <h5> WHO</h5>
-            <span>alex</span>
+            <span>Aleksas Bagdonas</span>
           </li>
           <li className="faq-li">
             <h5> HOW</h5>
-            <span>mern stack</span>
+            <span>MERN stack</span>
           </li>
           <li className="faq-li">
             <h5> WHEN</h5>

@@ -61,12 +61,28 @@ const Movies = ({ name, readRules, setReadRules }) => {
           return;
         }
       }
+    for (var i = 0; i < tops.length; i++) {
+      if (topData.player === tops[i].player && topData.game === tops[i].game)
+        nameExists = true;
+    }
     if (tops.length < 3 && !nameExists && topData.maxScore !== 0)
       dispatch(createTop(topData));
+    else if (tops.length < 3 && topData.maxScore !== 0 && nameExists) {
+      for (var i = 0; i < tops.length; i++) {
+        if (topData.player === tops[i].player && topData.game === tops[i].game)
+          dispatch(updateTop(tops[i]._id, topData));
+      }
+    }
   };
   const compareGuess = () => {
-    if (Math.abs(randomMovie.vote_average - guess) < 1) {
-      setScore(score + 1);
+    if (Math.abs(randomMovie.vote_average - guess) <= 1) {
+      if (Math.abs(randomMovie.vote_average - guess) === 0) {
+        setScore(score + 10);
+      } else if (Math.abs(randomMovie.vote_average - guess) <= 0.2) {
+        setScore(score + 3);
+      } else if (Math.abs(randomMovie.vote_average - guess) <= 0.5) {
+        setScore(score + 2);
+      } else setScore(score + 1);
       setIsCorrect(true);
       checkIfTop();
     } else {
