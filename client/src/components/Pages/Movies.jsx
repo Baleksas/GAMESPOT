@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import { createTop, updateTop } from "../../actions/tops";
 import { useDispatch } from "react-redux";
 import Rules from "./Rules";
+import { Link } from "react-router-dom";
 
 const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
 
@@ -21,6 +22,7 @@ const Movies = ({ name, readRules, setReadRules }) => {
   const [isCorrect, setIsCorrect] = useState();
   const [lifes, setLifes] = useState([0, 1, 2]);
   const [answerWas, setAnswerWas] = useState();
+  const [gotToTopBoard, setGotToTopBoard] = useState(false);
   const [correctAnswerWas, setCorrectAnswerWas] = useState();
   const [gameOver, setGameOver] = useState(false);
   const [topData, setTopData] = useState({
@@ -54,10 +56,11 @@ const Movies = ({ name, readRules, setReadRules }) => {
         ) {
           if (topData.player === tops[i].player) {
             dispatch(updateTop(tops[i]._id, topData));
-            console.log("NAME IS SAME. UPDATED. ", topData.player);
+            setGotToTopBoard(true);
             return;
           }
           dispatch(createTop(topData));
+          setGotToTopBoard(true);
           return;
         }
       }
@@ -65,12 +68,18 @@ const Movies = ({ name, readRules, setReadRules }) => {
       if (topData.player === tops[i].player && topData.game === tops[i].game)
         nameExists = true;
     }
-    if (tops.length < 3 && !nameExists && topData.maxScore !== 0)
+    if (tops.length < 3 && !nameExists && topData.maxScore !== 0) {
       dispatch(createTop(topData));
-    else if (tops.length < 3 && topData.maxScore !== 0 && nameExists) {
+      setGotToTopBoard(true);
+    } else if (tops.length < 3 && topData.maxScore !== 0 && nameExists) {
       for (var i = 0; i < tops.length; i++) {
-        if (topData.player === tops[i].player && topData.game === tops[i].game)
+        if (
+          topData.player === tops[i].player &&
+          topData.game === tops[i].game
+        ) {
           dispatch(updateTop(tops[i]._id, topData));
+          setGotToTopBoard(true);
+        }
       }
     }
   };
@@ -173,6 +182,16 @@ const Movies = ({ name, readRules, setReadRules }) => {
           <button className="play-again-btn" onClick={() => playAgain()}>
             PLAY AGAIN
           </button>
+          {gotToTopBoard && (
+            <>
+              <span style={{ textAlign: "center" }}>
+                Congratulations! You got to the TOP board
+              </span>
+              <Link className="play-again-btn" to="/top">
+                TOP
+              </Link>
+            </>
+          )}
         </div>
       )}
     </motion.section>
