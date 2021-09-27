@@ -44,8 +44,8 @@ const Header = ({ hideMain, setHideMain }) => {
           </li>
           <ul>
             <li className={`navItem`}>
-              <Link onClick={() => setMobileIsOpen(!mobileIsOpen)} to="/dino">
-                Dino
+              <Link onClick={() => setMobileIsOpen(!mobileIsOpen)} to="/CSQuiz">
+                CSQuiz
               </Link>
             </li>
             <li className={`navItem`}>

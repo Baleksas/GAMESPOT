@@ -10,7 +10,7 @@ import AlienIncorrect from "../../img/AlienIconIncorrect.png";
 import GameOne from "../Elements/GameOne";
 const FEATURED_API = `https://opentdb.com/api.php?amount=50&category=18&type=multiple`;
 
-const Dino = ({ name, readRules, setReadRules }) => {
+const CSQuiz = ({ name, readRules, setReadRules }) => {
   const dispatch = useDispatch();
   const tops = useSelector((state) => state.tops);
   const [data, setData] = useState();
@@ -25,7 +25,7 @@ const Dino = ({ name, readRules, setReadRules }) => {
   const [topData, setTopData] = useState({
     player: name,
     maxScore: score,
-    game: "dino",
+    game: "CSQuiz",
   });
 
   useEffect(async () => {
@@ -46,7 +46,7 @@ const Dino = ({ name, readRules, setReadRules }) => {
     setScore(0);
   };
   const openRules = () => {
-    setReadRules(readRules.filter((game) => game !== "dino"));
+    setReadRules(readRules.filter((game) => game !== "CSQuiz"));
   };
   const compareGuess = (choice, index) => {
     if (choice) {
@@ -97,7 +97,7 @@ const Dino = ({ name, readRules, setReadRules }) => {
     }
   };
 
-  if (!readRules.includes("dino"))
+  if (!readRules.includes("CSQuiz"))
     return (
       <motion.section
         initial={{ scaleY: 0, scaleX: 0 }}
@@ -105,7 +105,11 @@ const Dino = ({ name, readRules, setReadRules }) => {
         exit={{ scaleY: 0, scaleX: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Rules setReadRules={setReadRules} readRules={readRules} game="dino" />
+        <Rules
+          setReadRules={setReadRules}
+          readRules={readRules}
+          game="CSQuiz"
+        />
       </motion.section>
     );
   return (
@@ -116,7 +120,7 @@ const Dino = ({ name, readRules, setReadRules }) => {
       transition={{ duration: 0.5 }}
     >
       {!gameOver ? (
-        <div className="dino-game">
+        <div className="CSQuiz-game">
           <GameOne
             randomQuestion={randomQuestion}
             compareGuess={compareGuess}
@@ -164,4 +168,4 @@ const Dino = ({ name, readRules, setReadRules }) => {
   );
 };
 
-export default Dino;
+export default CSQuiz;

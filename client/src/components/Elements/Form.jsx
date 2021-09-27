@@ -12,7 +12,7 @@ const Form = ({ name }) => {
   const [reviewData, setReviewData] = useState({
     author: name,
     message: "",
-    game: "dino",
+    game: "CSQuiz",
     maxScore: 0,
   });
   const checkIfAppropriate = (reviewData) => {
@@ -45,7 +45,7 @@ const Form = ({ name }) => {
     setReviewData({
       author: name,
       message: "",
-      game: "dino",
+      game: "CSQuiz",
       maxScore: 0,
     });
   };
@@ -71,7 +71,7 @@ const Form = ({ name }) => {
             name="game"
             id="select_Game"
           >
-            <option value="dino">Dino</option>
+            <option value="CSQuiz">CSQuiz</option>
             <option value="movies">movies</option>
             <option value="other">Other</option>
           </select>

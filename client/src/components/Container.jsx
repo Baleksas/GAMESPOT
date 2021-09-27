@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Main from "../components/Pages/Main";
-import Dino from "../components/Pages/Dino";
+import CSQuiz from "../components/Pages/CSQuiz";
 import Movies from "./Pages/Movies";
 import Top from "../components/Pages/Top";
 import Reviews from "../components/Pages/Reviews";
@@ -32,7 +32,7 @@ const Container = ({
               />
             </Route>
             <Route path="/CSQuiz">
-              <Dino
+              <CSQuiz
                 readRules={readRules}
                 setReadRules={setReadRules}
                 name={name}

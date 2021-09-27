@@ -5,7 +5,7 @@ import Loading from "../Elements/Loading";
 import TopItem from "../Elements/TopItem";
 import { getTops, deleteTop } from "../../actions/tops";
 import { useDispatch } from "react-redux";
-import Dino from "../../img/Dino.gif";
+import CSQuiz from "../../img/CSQuiz.gif";
 import Movies from "../../img/Movies.gif";
 
 const Top = () => {
@@ -34,11 +34,13 @@ const Top = () => {
     }
   };
   // FILTERS tops which will be shown and kept on a board
-  const showDinoTops = tops.filter((top) => top.game === "dino").slice(0, 3);
-  showDinoTops.forEach((top, index) => {
+  const showCSQuizTops = tops
+    .filter((top) => top.game === "CSQuiz")
+    .slice(0, 3);
+  showCSQuizTops.forEach((top, index) => {
     top.place = index + 1;
   });
-  sort(showDinoTops);
+  sort(showCSQuizTops);
   const showMsTops = tops.filter((top) => top.game === "movies").slice(0, 3);
   showMsTops.forEach((top, index) => {
     top.place = index + 1;
@@ -46,11 +48,11 @@ const Top = () => {
   sort(showMsTops);
 
   // FILTERS tops which have to be deleted as they are not used or shown. It means that if you want to lock your progress, you have to make a record score.
-  const deleteDinoTops = tops.filter((top) => top.game === "dino").slice(3);
+  const deleteCSQuizTops = tops.filter((top) => top.game === "CSQuiz").slice(3);
   const deleteMsTops = tops.filter((top) => top.game === "movies").slice(3);
 
   // Maps through unshown tops and deletes them from the database
-  deleteDinoTops.map((topToDelete) => dispatch(deleteTop(topToDelete._id)));
+  deleteCSQuizTops.map((topToDelete) => dispatch(deleteTop(topToDelete._id)));
   deleteMsTops.map((topToDelete) => dispatch(deleteTop(topToDelete._id)));
 
   return (
@@ -61,15 +63,15 @@ const Top = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="top">
-        <div id="dino-img" className="tops-icon">
-          <img src={Dino} alt="Dino" />
+        <div id="CSQuiz-img" className="tops-icon">
+          <img src={CSQuiz} alt="CSQuiz" />
         </div>
-        {!showDinoTops.length ? (
-          <div className="loading-container-dino">
+        {!showCSQuizTops.length ? (
+          <div className="loading-container-CSQuiz">
             <Loading />
           </div>
         ) : (
-          showDinoTops.map((top) => <TopItem key={top._id} top={top} />)
+          showCSQuizTops.map((top) => <TopItem key={top._id} top={top} />)
         )}
         <div id="ms-img" className="tops-icon">
           <img src={Movies} alt="movies" />

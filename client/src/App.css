@@ -370,8 +370,8 @@ footer {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
-/* DINO */
-.dino-button {
+/* CSQuiz */
+.CSQuiz-button {
   background-color: khaki;
   height: max-content;
   padding: 5em;
@@ -379,13 +379,13 @@ footer {
 .answers {
   display: flex;
 }
-.dino-button:hover {
+.CSQuiz-button:hover {
   opacity: 0.5;
 }
 .game-1-button {
   margin: 0 1em;
 }
-.dino-tops {
+.CSQuiz-tops {
   display: flex;
 }
 
@@ -417,7 +417,7 @@ table,
 td {
   border: 1px solid white;
 }
-.loading-container-dino {
+.loading-container-CSQuiz {
   grid-row-start: 1;
 }
 .loading-container-ms {
@@ -427,12 +427,12 @@ td {
   grid-column-start: 1;
   grid-row-start: 2;
 }
-#dino-img {
+#CSQuiz-img {
   grid-column-start: 1;
   grid-row-start: 1;
 }
 #ms-img img,
-#dino-img img {
+#CSQuiz-img img {
   width: 100px;
   height: auto;
 }
@@ -527,7 +527,7 @@ td {
 }
 /* Movies */
 .ms-game,
-.dino-game {
+.CSQuiz-game {
   display: flex;
   width: 90%;
   height: 95%;
@@ -535,7 +535,7 @@ td {
   justify-content: space-around;
   margin: auto;
 }
-.dino-game {
+.CSQuiz-game {
   flex-direction: column;
 }
 .movie-info {
@@ -706,7 +706,7 @@ footer img {
     width: 150px;
     height: 150px;
   }
-  .dino-game {
+  .CSQuiz-game {
     padding-top: 20vh;
     height: 150vh;
   }

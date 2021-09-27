@@ -1,5 +1,5 @@
 import React from "react";
-import Dino from "../../img/Dino.jpg";
+import CSQuiz from "../../img/CSQuiz.gif";
 import Movies from "../../img/Movies.gif";
 import Other from "../../img/Background.gif";
 
@@ -12,7 +12,7 @@ const Review = ({ review }) => {
       </div>
       <div className="review-game">
         <div className="game-icon">
-          {review.game === "dino" && <img src={Dino} alt="Dino" />}
+          {review.game === "CSQuiz" && <img src={CSQuiz} alt="CSQuiz" />}
           {review.game === "movies" && <img src={Movies} alt="movies" />}
           {review.game === "other" && <img src={Other} alt="Other" />}
         </div>
