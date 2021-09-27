@@ -11,9 +11,16 @@ const Faq = () => {
         <div className="extra_info">
           <p>
             This full-stack application is censored with
-            <i>
-              <b> Censor-Sensor </b>
-            </i>
+            <a
+              target="_blank"
+              style={{
+                textDecoration: "none",
+                color: "white",
+              }}
+              href="https://www.npmjs.com/package/censor-sensor"
+            >
+              <i> Censor-Sensor </i>
+            </a>
             library
           </p>
         </div>

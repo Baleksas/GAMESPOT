@@ -161,7 +161,7 @@ header li a {
   padding: 10px 15px;
   background-color: rgba(180, 77, 77, 0.8);
   width: 200px;
-  height: 200px;
+  height: 250px;
   opacity: 0;
   transition: all 200ms ease-in-out;
   border: 3px solid white;
@@ -412,6 +412,10 @@ footer {
 }
 .movies-game-top {
   grid-row-start: 2;
+}
+table,
+td {
+  border: 1px solid white;
 }
 .loading-container-dino {
   grid-row-start: 1;

@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Ufo_closed from "../img/Ufo_black.png";
 import Ufo_open from "../img/Ufo_white.png";
 
-const Header = () => {
+const Header = ({ hideMain, setHideMain }) => {
   const [mobileIsOpen, setMobileIsOpen] = useState(false);
+
   return (
     <>
       <div className="burger">
@@ -16,19 +17,19 @@ const Header = () => {
       <header id="header">
         <nav>
           <ul>
-            <li className={`navItem`}>
+            <li onClick={() => setHideMain(true)} className={`navItem`}>
               <Link to="/dino">CSQuiz</Link>
             </li>
-            <li className={`navItem`}>
+            <li onClick={() => setHideMain(true)} className={`navItem`}>
               <Link to="/movies">Movies</Link>
             </li>
             <li id="title">
               <Link to="/">GAMESPOT</Link>
             </li>
-            <li className={`navItem`}>
+            <li onClick={() => setHideMain(true)} className={`navItem`}>
               <Link to="/reviews">Reviews</Link>
             </li>
-            <li className={`navItem`}>
+            <li onClick={() => setHideMain(true)} className={`navItem`}>
               <Link to="/top">Top</Link>
             </li>
           </ul>

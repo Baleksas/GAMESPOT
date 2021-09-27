@@ -8,9 +8,15 @@ import Reviews from "../components/Pages/Reviews";
 import { AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
 
-const Container = ({ readRules, setReadRules, name, setName }) => {
+const Container = ({
+  hideMain,
+  setHideMain,
+  readRules,
+  setReadRules,
+  name,
+  setName,
+}) => {
   const location = useLocation();
-  const [hideMain, setHideMain] = useState(false);
 
   return (
     <>
