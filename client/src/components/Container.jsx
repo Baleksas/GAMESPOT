@@ -31,7 +31,7 @@ const Container = ({
                 setName={setName}
               />
             </Route>
-            <Route path="/dino">
+            <Route path="/CSQuiz">
               <Dino
                 readRules={readRules}
                 setReadRules={setReadRules}

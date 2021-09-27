@@ -22,7 +22,7 @@ const Footer = ({ text }) => {
         ? `Go on! You can beat that ${tops[0].player}`
         : "There is not much competition, eh?";
       break;
-    case "/dino":
+    case "/CSQuiz":
       FooterMessage = "Don't worry, your internet is fine...";
       break;
     case "/movies":

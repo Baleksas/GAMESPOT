@@ -18,7 +18,7 @@ const Header = ({ hideMain, setHideMain }) => {
         <nav>
           <ul>
             <li onClick={() => setHideMain(true)} className={`navItem`}>
-              <Link to="/dino">CSQuiz</Link>
+              <Link to="/CSQuiz">CSQuiz</Link>
             </li>
             <li onClick={() => setHideMain(true)} className={`navItem`}>
               <Link to="/movies">Movies</Link>
