@@ -43,55 +43,86 @@ const Movies = ({ name, readRules, setReadRules }) => {
   useEffect(() => {
     setTopData({ ...topData, maxScore: score });
   }, [score]);
-  const checkIfTop = () => {
-    let nameExists = false;
-    if (tops.length !== 0)
-      for (var i = 0; i < tops.length; i++) {
-        if (topData.player === tops[i].player && topData.game === tops[i].game)
-          nameExists = true;
 
-        if (
-          topData.maxScore > tops[i].maxScore &&
-          topData.game === tops[i].game
-        ) {
-          if (topData.player === tops[i].player) {
-            dispatch(updateTop(tops[i]._id, topData));
-            setGotToTopBoard(true);
-            return;
-          }
+  const checkIfTop = () => {
+    // let nameExists = false;
+    // if (tops.length !== 0)
+    //   for (var i = 0; i < tops.length; i++) {
+    //     if (topData.player === tops[i].player && topData.game === tops[i].game)
+    //       nameExists = true;
+
+    //     if (
+    //       topData.maxScore > tops[i].maxScore &&
+    //       topData.game === tops[i].game
+    //     ) {
+    //       if (topData.player === tops[i].player) {
+    //         dispatch(updateTop(tops[i]._id, topData));
+    //         setGotToTopBoard(true);
+    //         return;
+    //       }
+    //       dispatch(createTop(topData));
+    //       setGotToTopBoard(true);
+    //       return;
+    //     }
+    //   }
+
+    // for (var i = 0; i < tops.length; i++) {
+    //   if (topData.player === tops[i].player && topData.game === tops[i].game)
+    //     nameExists = true;
+    // }
+    // if (tops.length < 3 && !nameExists && topData.maxScore !== 0) {
+    //   dispatch(createTop(topData));
+    //   setGotToTopBoard(true);
+    // } else if (tops.length < 3 && topData.maxScore !== 0 && nameExists) {
+    //   for (var i = 0; i < tops.length; i++) {
+    //     if (
+    //       topData.player === tops[i].player &&
+    //       topData.game === tops[i].game
+    //     ) {
+    //       dispatch(updateTop(tops[i]._id, topData));
+    //       setGotToTopBoard(true);
+    //     }
+    //   }
+    // }
+    // Filtering only tops of movies games | To Test
+    let movie_tops = tops.filter((top) => top.game === "movies");
+
+    console.log(movie_tops);
+
+    // Updated algorithm | To Test
+    for (var i = 0; i < movie_tops.length; i++) {
+      if (
+        topData.maxScore > movie_tops[i].maxScore &&
+        topData.game === movie_tops[i].game
+      ) {
+        if (topData.player === movie_tops[i].player) {
+          dispatch(updateTop(movie_tops[i]._id, topData));
+          setGotToTopBoard(true);
+          return;
+        } else {
           dispatch(createTop(topData));
           setGotToTopBoard(true);
           return;
         }
       }
-    for (var i = 0; i < tops.length; i++) {
-      if (topData.player === tops[i].player && topData.game === tops[i].game)
-        nameExists = true;
     }
-    if (tops.length < 3 && !nameExists && topData.maxScore !== 0) {
+    if (movie_tops.length < 3) {
       dispatch(createTop(topData));
       setGotToTopBoard(true);
-    } else if (tops.length < 3 && topData.maxScore !== 0 && nameExists) {
-      for (var i = 0; i < tops.length; i++) {
-        if (
-          topData.player === tops[i].player &&
-          topData.game === tops[i].game
-        ) {
-          dispatch(updateTop(tops[i]._id, topData));
-          setGotToTopBoard(true);
-        }
-      }
+      return;
     }
   };
   const compareGuess = () => {
-    if (Math.abs(randomMovie.vote_average - guess) <= 1) {
-      if (Math.abs(randomMovie.vote_average - guess) === 0) {
+    let acurracyOfGuess = Math.abs(randomMovie.vote_average - guess);
+    if (Math.abs(acurracyOfGuess) <= 1) {
+      if (Math.abs(acurracyOfGuess) === 0) {
         setScore(score + 10);
-      } else if (Math.abs(randomMovie.vote_average - guess) <= 0.2) {
+      } else if (Math.abs(acurracyOfGuess) <= 0.2) {
         setScore(score + 3);
-      } else if (Math.abs(randomMovie.vote_average - guess) <= 0.5) {
+      } else if (Math.abs(acurracyOfGuess) <= 0.5) {
         setScore(score + 2);
       } else setScore(score + 1);
+
       setIsCorrect(true);
       checkIfTop();
     } else {

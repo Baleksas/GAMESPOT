@@ -49,7 +49,7 @@ const Rules = ({ game, setReadRules, readRules }) => {
                   </table>
                 </>
               ) : (
-                "You will see the right answer below after each question"
+                "You will receive 10 points for every correct answer and lose 1 life for every incorrect"
               )}
             </li>
             <li>You have 3 lifes</li>

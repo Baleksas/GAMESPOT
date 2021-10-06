@@ -8,6 +8,8 @@ import Rules from "./Rules";
 import AlienCorrect from "../../img/AlienIconCorrect.png";
 import AlienIncorrect from "../../img/AlienIconIncorrect.png";
 import GameOne from "../Elements/GameOne";
+import { Link } from "react-router-dom";
+
 const FEATURED_API = `https://opentdb.com/api.php?amount=50&category=18&type=multiple`;
 
 const CSQuiz = ({ name, readRules, setReadRules }) => {
@@ -19,6 +21,8 @@ const CSQuiz = ({ name, readRules, setReadRules }) => {
 
   const [isCorrect, setIsCorrect] = useState();
   const [answerWas, setAnswerWas] = useState();
+  const [gotToTopBoard, setGotToTopBoard] = useState(false);
+
   const [correctAnswerWas, setCorrectAnswerWas] = useState();
   const [lifes, setLifes] = useState([0, 1, 2]);
   const [gameOver, setGameOver] = useState(false);
@@ -69,31 +73,59 @@ const CSQuiz = ({ name, readRules, setReadRules }) => {
     setRandomQuestion(data.results[Math.floor(Math.random() * 50)]);
   };
   const checkIfTop = () => {
-    let nameExists = false;
-    console.log("tops length:", tops.length);
-    if (tops.length !== 0)
-      for (var i = 0; i < tops.length; i++) {
+    // let nameExists = false;
+    // console.log("tops length:", tops.length);
+    // if (tops.length !== 0)
+    //   for (var i = 0; i < tops.length; i++) {
+    //     if (
+    //       topData.player === tops[i].player &&
+    //       topData.game === tops[i].game
+    //     ) {
+    //       nameExists = true;
+    //       console.log("name exists:", tops[i].player);
+    //     }
+    //     if (topData.maxScore > tops[i].maxScore) {
+    //       if (topData.player === tops[i].player) {
+    //         dispatch(updateTop(tops[i]._id, topData));
+    //         console.log("NAME IS SAME. UPDATED. ", topData.player);
+    //         return;
+    //       }
+    //       dispatch(createTop(topData));
+    //       console.log("New top of csquiz created:", topData);
+    //       return;
+    //     }
+    //   }
+    // if (tops.length < 3 && !nameExists && topData.maxScore !== 0) {
+    //   dispatch(createTop(topData));
+    //   console.log("New top of csquiz created:", topData);
+    // }
+    // Filtering only tops of quiz games
+    // TODO Test
+    let quiz_tops = tops.filter((top) => top.game === "CSQuiz");
+    console.log(quiz_tops);
+    // Updated algorithm
+    // TODO Test
+    if (quiz_tops.length === 0) {
+      dispatch(createTop(topData));
+      setGotToTopBoard(true);
+      return;
+    } else {
+      for (var i = 0; i < quiz_tops.length; i++) {
         if (
-          topData.player === tops[i].player &&
-          topData.game === tops[i].game
+          topData.maxScore > quiz_tops[i].maxScore &&
+          topData.game === quiz_tops[i].game
         ) {
-          nameExists = true;
-          console.log("name exists:", tops[i].player);
-        }
-        if (topData.maxScore > tops[i].maxScore) {
-          if (topData.player === tops[i].player) {
-            dispatch(updateTop(tops[i]._id, topData));
-            console.log("NAME IS SAME. UPDATED. ", topData.player);
+          if (topData.player === quiz_tops[i].player) {
+            dispatch(updateTop(quiz_tops[i]._id, topData));
+            setGotToTopBoard(true);
+            return;
+          } else {
+            dispatch(createTop(topData));
+            setGotToTopBoard(true);
             return;
           }
-          dispatch(createTop(topData));
-          console.log("New top of csquiz created:", topData);
-          return;
         }
       }
-    if (tops.length < 3 && !nameExists && topData.maxScore !== 0) {
-      dispatch(createTop(topData));
-      console.log("New top of csquiz created:", topData);
     }
   };
 
@@ -162,6 +194,16 @@ const CSQuiz = ({ name, readRules, setReadRules }) => {
           <button className="play-again-btn" onClick={() => playAgain()}>
             PLAY AGAIN
           </button>
+          {gotToTopBoard && (
+            <>
+              <span style={{ textAlign: "center" }}>
+                Congratulations! You got to the TOP board
+              </span>
+              <Link className="play-again-btn" to="/top">
+                TOP
+              </Link>
+            </>
+          )}
         </div>
       )}
     </motion.section>
