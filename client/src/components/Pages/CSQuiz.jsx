@@ -73,38 +73,9 @@ const CSQuiz = ({ name, readRules, setReadRules }) => {
     setRandomQuestion(data.results[Math.floor(Math.random() * 50)]);
   };
   const checkIfTop = () => {
-    // let nameExists = false;
-    // console.log("tops length:", tops.length);
-    // if (tops.length !== 0)
-    //   for (var i = 0; i < tops.length; i++) {
-    //     if (
-    //       topData.player === tops[i].player &&
-    //       topData.game === tops[i].game
-    //     ) {
-    //       nameExists = true;
-    //       console.log("name exists:", tops[i].player);
-    //     }
-    //     if (topData.maxScore > tops[i].maxScore) {
-    //       if (topData.player === tops[i].player) {
-    //         dispatch(updateTop(tops[i]._id, topData));
-    //         console.log("NAME IS SAME. UPDATED. ", topData.player);
-    //         return;
-    //       }
-    //       dispatch(createTop(topData));
-    //       console.log("New top of csquiz created:", topData);
-    //       return;
-    //     }
-    //   }
-    // if (tops.length < 3 && !nameExists && topData.maxScore !== 0) {
-    //   dispatch(createTop(topData));
-    //   console.log("New top of csquiz created:", topData);
-    // }
-    // Filtering only tops of quiz games
-    // TODO Test
     let quiz_tops = tops.filter((top) => top.game === "CSQuiz");
     console.log(quiz_tops);
-    // Updated algorithm
-    // TODO Test
+
     if (quiz_tops.length === 0) {
       dispatch(createTop(topData));
       setGotToTopBoard(true);

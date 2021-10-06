@@ -44,69 +44,33 @@ const Movies = ({ name, readRules, setReadRules }) => {
     setTopData({ ...topData, maxScore: score });
   }, [score]);
 
-  const checkIfTop = () => {
-    // let nameExists = false;
-    // if (tops.length !== 0)
-    //   for (var i = 0; i < tops.length; i++) {
-    //     if (topData.player === tops[i].player && topData.game === tops[i].game)
-    //       nameExists = true;
-
-    //     if (
-    //       topData.maxScore > tops[i].maxScore &&
-    //       topData.game === tops[i].game
-    //     ) {
-    //       if (topData.player === tops[i].player) {
-    //         dispatch(updateTop(tops[i]._id, topData));
-    //         setGotToTopBoard(true);
-    //         return;
-    //       }
-    //       dispatch(createTop(topData));
-    //       setGotToTopBoard(true);
-    //       return;
-    //     }
-    //   }
-
-    // for (var i = 0; i < tops.length; i++) {
-    //   if (topData.player === tops[i].player && topData.game === tops[i].game)
-    //     nameExists = true;
-    // }
-    // if (tops.length < 3 && !nameExists && topData.maxScore !== 0) {
-    //   dispatch(createTop(topData));
-    //   setGotToTopBoard(true);
-    // } else if (tops.length < 3 && topData.maxScore !== 0 && nameExists) {
-    //   for (var i = 0; i < tops.length; i++) {
-    //     if (
-    //       topData.player === tops[i].player &&
-    //       topData.game === tops[i].game
-    //     ) {
-    //       dispatch(updateTop(tops[i]._id, topData));
-    //       setGotToTopBoard(true);
-    //     }
-    //   }
-    // }
-    // Filtering only tops of movies games | To Test
+  const checkIfTop = (lastCheck) => {
+    console.log(lastCheck);
     let movie_tops = tops.filter((top) => top.game === "movies");
+    let playerExists = false;
+    for (var i = 0; i < tops.length; i++) {
+      if (topData.player === tops[i].player) playerExists = true;
+    }
 
-    console.log(movie_tops);
-
-    // Updated algorithm | To Test
-    for (var i = 0; i < movie_tops.length; i++) {
+    for (var i = 0; i < tops.length; i++) {
       if (
-        topData.maxScore > movie_tops[i].maxScore &&
-        topData.game === movie_tops[i].game
+        topData.maxScore > tops[i].maxScore &&
+        topData.game === tops[i].game
       ) {
-        if (topData.player === movie_tops[i].player) {
-          dispatch(updateTop(movie_tops[i]._id, topData));
+        if (topData.player === tops[i].player) {
+          dispatch(updateTop(tops[i]._id, topData));
           setGotToTopBoard(true);
           return;
-        } else {
+        } else if (!playerExists) {
+          console.log("Creating because no same player");
           dispatch(createTop(topData));
           setGotToTopBoard(true);
           return;
         }
       }
     }
-    if (movie_tops.length < 3) {
+    if (movie_tops.length < 3 && !playerExists && lastCheck !== true) {
+      console.log("Creating because not true");
       dispatch(createTop(topData));
       setGotToTopBoard(true);
       return;
@@ -131,7 +95,7 @@ const Movies = ({ name, readRules, setReadRules }) => {
       setLifes(lifes);
     }
     if (lifes.length === 0) {
-      checkIfTop();
+      checkIfTop(true);
       setGameOver(true);
     }
     setAnswerWas(guess);
