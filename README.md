@@ -1,6 +1,9 @@
 # GAMESPOT
 A Portfolio project of Aleksas Bagdonas
 
+### You can access the application online here:
+[Gamespot](https://game-spot.netlify.app/)
+
 ### Technologies used
 1. React
 2. Express
