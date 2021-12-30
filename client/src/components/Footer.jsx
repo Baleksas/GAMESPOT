@@ -23,7 +23,11 @@ const Footer = ({ text }) => {
         : "There is not much competition, eh?";
       break;
     case "/CSQuiz":
-      FooterMessage = "Don't worry, your internet is fine...";
+      FooterMessage = [
+        "Computer Science is not a joke",
+        "Struggle is real!",
+        "How is it going for you?",
+      ][Math.round(Math.random())];
       break;
     case "/movies":
       FooterMessage =

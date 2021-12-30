@@ -9,10 +9,10 @@ import AlienCorrect from "../../img/AlienIconCorrect.png";
 import AlienIncorrect from "../../img/AlienIconIncorrect.png";
 import GameOne from "../Elements/GameOne";
 import { Link } from "react-router-dom";
-
+import LifesBox from "../Elements/LifesBox";
 const FEATURED_API = `https://opentdb.com/api.php?amount=50&category=18&type=multiple`;
 
-const CSQuiz = ({ name, readRules, setReadRules }) => {
+const CSQuiz = ({ name, readRules, setReadRules, lifes, setLifes }) => {
   const dispatch = useDispatch();
   const tops = useSelector((state) => state.tops);
   const [data, setData] = useState();
@@ -24,7 +24,6 @@ const CSQuiz = ({ name, readRules, setReadRules }) => {
   const [gotToTopBoard, setGotToTopBoard] = useState(false);
 
   const [correctAnswerWas, setCorrectAnswerWas] = useState();
-  const [lifes, setLifes] = useState([0, 1, 2]);
   const [gameOver, setGameOver] = useState(false);
   const [topData, setTopData] = useState({
     player: name,
@@ -129,12 +128,9 @@ const CSQuiz = ({ name, readRules, setReadRules }) => {
             compareGuess={compareGuess}
           />
 
-          <div className="lifes-div">
-            {lifes.map((life) => (
-              <img key={life} src={Life} alt="" />
-            ))}
-          </div>
           <div className="movie-display">
+            <LifesBox lifes={lifes} />
+
             <div>Score: {score}</div>
             <div className="indicator">
               {isCorrect ? (

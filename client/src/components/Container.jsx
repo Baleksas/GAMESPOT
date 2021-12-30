@@ -17,6 +17,7 @@ const Container = ({
   setName,
 }) => {
   const location = useLocation();
+  const [lifes, setLifes] = useState([0, 1, 2]);
 
   return (
     <>
@@ -36,6 +37,8 @@ const Container = ({
                 readRules={readRules}
                 setReadRules={setReadRules}
                 name={name}
+                lifes={lifes}
+                setLifes={setLifes}
               />
             </Route>
             <Route path="/top">
@@ -46,6 +49,8 @@ const Container = ({
                 readRules={readRules}
                 setReadRules={setReadRules}
                 name={name}
+                lifes={lifes}
+                setLifes={setLifes}
               />
             </Route>
             <Route path="/reviews">

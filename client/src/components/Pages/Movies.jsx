@@ -3,16 +3,16 @@ import { motion } from "framer-motion";
 import Movie from "../Elements/Movie";
 import AlienCorrect from "../../img/AlienIconCorrect.png";
 import AlienIncorrect from "../../img/AlienIconIncorrect.png";
-import Life from "../../img/Life.png";
 import { useSelector } from "react-redux";
 import { createTop, updateTop } from "../../actions/tops";
 import { useDispatch } from "react-redux";
 import Rules from "./Rules";
 import { Link } from "react-router-dom";
+import LifesBox from "../Elements/LifesBox";
 
 const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
 
-const Movies = ({ name, readRules, setReadRules }) => {
+const Movies = ({ name, readRules, setReadRules, lifes, setLifes }) => {
   const dispatch = useDispatch();
   const tops = useSelector((state) => state.tops);
   const [movies, setMovies] = useState([]);
@@ -20,7 +20,6 @@ const Movies = ({ name, readRules, setReadRules }) => {
   const [randomMovie, setRandomMovie] = useState();
   const [score, setScore] = useState(0);
   const [isCorrect, setIsCorrect] = useState();
-  const [lifes, setLifes] = useState([0, 1, 2]);
   const [answerWas, setAnswerWas] = useState();
   const [gotToTopBoard, setGotToTopBoard] = useState(false);
   const [correctAnswerWas, setCorrectAnswerWas] = useState();
@@ -141,12 +140,9 @@ const Movies = ({ name, readRules, setReadRules }) => {
             setGuess={setGuess}
             guess={guess}
           />
-          <div className="lifes-div">
-            {lifes.map((life) => (
-              <img key={life} src={Life} alt="" />
-            ))}
-          </div>
+
           <div className="movie-display">
+            <LifesBox lifes={lifes} />
             <div>Score: {score}</div>
             <div className="indicator">
               {isCorrect ? (
