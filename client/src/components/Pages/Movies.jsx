@@ -44,7 +44,6 @@ const Movies = ({ name, readRules, setReadRules, lifes, setLifes }) => {
   }, [score]);
 
   const checkIfTop = (lastCheck) => {
-    console.log(lastCheck);
     let movie_tops = tops.filter((top) => top.game === "movies");
     let playerExists = false;
     for (var i = 0; i < tops.length; i++) {
@@ -61,7 +60,6 @@ const Movies = ({ name, readRules, setReadRules, lifes, setLifes }) => {
           setGotToTopBoard(true);
           return;
         } else if (!playerExists) {
-          console.log("Creating because no same player");
           dispatch(createTop(topData));
           setGotToTopBoard(true);
           return;
@@ -69,7 +67,6 @@ const Movies = ({ name, readRules, setReadRules, lifes, setLifes }) => {
       }
     }
     if (movie_tops.length < 3 && !playerExists && lastCheck !== true) {
-      console.log("Creating because not true");
       dispatch(createTop(topData));
       setGotToTopBoard(true);
       return;

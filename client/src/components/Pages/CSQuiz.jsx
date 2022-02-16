@@ -53,12 +53,10 @@ const CSQuiz = ({ name, readRules, setReadRules, lifes, setLifes }) => {
   };
   const compareGuess = (choice, index) => {
     if (choice) {
-      console.log("CORRECT");
       setScore(score + 1);
       setIsCorrect(true);
       checkIfTop();
     } else {
-      console.log("NOT CORRECT");
       setIsCorrect(false);
       lifes.pop();
       setLifes(lifes);
@@ -73,7 +71,6 @@ const CSQuiz = ({ name, readRules, setReadRules, lifes, setLifes }) => {
   };
   const checkIfTop = () => {
     let quiz_tops = tops.filter((top) => top.game === "CSQuiz");
-    console.log(quiz_tops);
 
     if (quiz_tops.length === 0) {
       dispatch(createTop(topData));
