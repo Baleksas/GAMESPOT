@@ -81,13 +81,13 @@ const Main = ({ name, setName, hideMain, setHideMain }) => {
           </button>
           <div className="choosePath">
             <li className={`chooseItem`}>
-              <Link to="/CSQuiz">CSQuiz</Link>
+              <Link to="/CSQuiz">CSQuiz {"<-"}</Link>
             </li>
             <li>
               <img width={50} src={alienchoose} alt="a" />
             </li>
             <li className={`chooseItem`}>
-              <Link to="/movies">Movies</Link>
+              <Link to="/movies">{"->"}Movies</Link>
             </li>
           </div>
           <Typing speed={10}>
