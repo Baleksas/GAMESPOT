@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const url = "https://game-spot-project.herokuapp.com/reviews";
-const url_top = "https://game-spot-project.herokuapp.com/top";
+const url = "https://gamespot-376120.nw.r.appspot.com/reviews";
+const url_top = "https://gamespot-376120.nw.r.appspot.com/top";
 
 export const fetchReviews = () => axios.get(url);
 
