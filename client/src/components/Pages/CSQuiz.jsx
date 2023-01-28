@@ -32,20 +32,17 @@ const CSQuiz = ({ name, readRules, setReadRules, lifes, setLifes }) => {
   });
 
   useEffect(() => {
-    async function fetchData() {
-      fetch(FEATURED_API)
-        .then((res) => res.json())
-        .catch((e) => console.log(e))
-        .then((data) => {
-          setData(data);
-          setRandomQuestion(data.results[Math.floor(Math.random() * 50)]);
-        });
-    }
-    fetchData();
+    fetch(FEATURED_API)
+      .then((res) => res.json())
+      .catch((e) => console.log(e))
+      .then((data) => {
+        setData(data);
+        setRandomQuestion(data.results[Math.floor(Math.random() * 50)]);
+      });
   }, []);
   useEffect(() => {
     setTopData({ ...topData, maxScore: score });
-  }, [score, topData]);
+  }, [score]);
   const playAgain = () => {
     setGameOver(false);
     setLifes([0, 1, 2]);
