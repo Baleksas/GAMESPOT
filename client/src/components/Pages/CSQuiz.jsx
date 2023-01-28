@@ -31,18 +31,21 @@ const CSQuiz = ({ name, readRules, setReadRules, lifes, setLifes }) => {
     game: "CSQuiz",
   });
 
-  useEffect(async () => {
-    fetch(FEATURED_API)
-      .then((res) => res.json())
-      .catch((e) => console.log(e))
-      .then((data) => {
-        setData(data);
-        setRandomQuestion(data.results[Math.floor(Math.random() * 50)]);
-      });
+  useEffect(() => {
+    async function fetchData() {
+      fetch(FEATURED_API)
+        .then((res) => res.json())
+        .catch((e) => console.log(e))
+        .then((data) => {
+          setData(data);
+          setRandomQuestion(data.results[Math.floor(Math.random() * 50)]);
+        });
+    }
+    fetchData();
   }, []);
   useEffect(() => {
     setTopData({ ...topData, maxScore: score });
-  }, [score]);
+  }, [score, topData]);
   const playAgain = () => {
     setGameOver(false);
     setLifes([0, 1, 2]);
