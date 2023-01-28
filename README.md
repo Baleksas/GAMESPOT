@@ -1,7 +1,8 @@
 # GAMESPOT
 A Portfolio project of Aleksas Bagdonas
 
-![Alien_icon svg](https://user-images.githubusercontent.com/58878092/215286998-de015253-6652-46f9-b5e5-ee6f60d1c7f3.png)
+![Alien_icon 1](https://user-images.githubusercontent.com/58878092/215287040-9aa2ab7c-d96b-43ee-a84b-3b836506a537.png)
+
 
 ### You can access the application online here:
 [Gamespot](https://game-spot.netlify.app/)
