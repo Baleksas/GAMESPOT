@@ -24,8 +24,8 @@ In 2023, I updated the application by: hosting the back-end on Google Cloud inst
 6. Review section where users can leave reviews using their nickname.
 7. Footer in every page that has moving dynamic text that is relevant to the page the user is viewing.
 8. Typed text section that gives interesting quotes about aliens.
-9. Reviews and Top leaderboard stored in a NoSQL database.
-10.
+9. Reviews and Top scores stored in a NoSQL database.
+10. Secure server-side authentication system.
 
 ### Technologies used
 
