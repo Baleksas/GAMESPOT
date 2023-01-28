@@ -5,6 +5,8 @@ import Typing from "react-typing-animation";
 import { CensorSensor } from "censor-sensor";
 import Faq from "../../components/Faq";
 import AlertBox from "../Elements/AlertBox";
+import { Link } from "react-router-dom";
+import alienchoose from "../../img/alienchoose.png";
 const Main = ({ name, setName, hideMain, setHideMain }) => {
   const [termName, setTermName] = useState();
   const [inputError, setInputError] = useState();
@@ -77,6 +79,17 @@ const Main = ({ name, setName, hideMain, setHideMain }) => {
           <button onClick={() => setHideMain(false)} className="change-btn">
             CHANGE NAME
           </button>
+          <div className="choosePath">
+            <li className={`chooseItem`}>
+              <Link to="/CSQuiz">CSQuiz</Link>
+            </li>
+            <li>
+              <img width={50} src={alienchoose} alt="a" />
+            </li>
+            <li className={`chooseItem`}>
+              <Link to="/movies">Movies</Link>
+            </li>
+          </div>
           <Typing speed={10}>
             <p>
               {Text.phrases[Math.floor(Math.random() * Text.phrases.length)]}
