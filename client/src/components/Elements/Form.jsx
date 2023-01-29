@@ -58,7 +58,6 @@ const Form = ({ name }) => {
             onChange={(e) =>
               setReviewData({ ...reviewData, message: e.target.value })
             }
-            value={reviewData.message}
             name="message"
             type="text"
             placeholder="message"
@@ -75,7 +74,7 @@ const Form = ({ name }) => {
             <option value="movies">movies</option>
             <option value="other">Other</option>
           </select>
-          <input type="submit" value="DONE" />
+          <button className="no-name-btn">DONE</button>
         </form>
       </div>
       <AlertBox type="review-alert" error={inputError} show={showAlert} />

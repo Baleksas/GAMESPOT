@@ -113,7 +113,7 @@ header ul {
 }
 header li {
   align-self: center;
-  font-size: 1.2em;
+  font-size: 22px;
 }
 header li a {
   color: black;
@@ -122,9 +122,9 @@ header li a {
   background-color: white;
   color: black;
 }
-#title {
+~ #title {
   align-self: flex-start;
-  font-size: 2em;
+  font-size: 40px;
 }
 #title a {
   color: rgb(180, 77, 77);
@@ -304,7 +304,7 @@ footer {
 /* REVIEW */
 .review,
 .top-item {
-  height: 120px;
+  height: auto;
   width: 100%;
   background-color: #270026;
   border: 2px solid #cf00f0;
@@ -318,8 +318,14 @@ footer {
 .review-text {
   flex: 1;
 }
-.review-text input {
+.review input,
+.review button {
+  margin: 1em 0;
+}
+.review-text input,
+.review-text select {
   width: 100%;
+  padding: 1em 1em;
 }
 .review-text form {
   height: 100%;
@@ -494,7 +500,7 @@ td {
 .main-choose input[type="text"] {
   color: rgb(180, 77, 77);
   font-size: 25px;
-  height: 30px;
+  height: 40px;
   max-width: 300px;
   text-align: center;
   outline: none;
@@ -518,7 +524,7 @@ td {
 .phrase {
   margin: auto;
   margin-bottom: 3em;
-  width: 80%;
+  width: 50%;
   line-height: 2em;
   display: flex;
   text-align: center;
@@ -529,7 +535,7 @@ td {
 }
 .phrase-name {
   color: rgba(180, 77, 77, 0.8);
-  font-size: 2em;
+  font-size: 28px;
 }
 /* Movies */
 .ms-game,
@@ -575,7 +581,7 @@ td {
   padding: 10px 15px;
   border: none;
   outline: none;
-  font-size: 1em;
+  font-size: 20px;
 }
 
 .guess-btn:hover,
@@ -719,7 +725,7 @@ footer img {
     margin: 1em;
   }
   .rules {
-    font-size: 0.8em;
+    font-size: 14px;
   }
   .rules-container {
     flex-direction: column;
@@ -729,7 +735,7 @@ footer img {
   }
   .FAQ {
     width: 150px;
-    font-size: 0.8em;
+    font-size: 22px;
   }
   .name-form {
     max-width: 100%;

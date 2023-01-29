@@ -8,8 +8,8 @@ import AlertBox from "../Elements/AlertBox";
 import { Link } from "react-router-dom";
 import alienchoose from "../../img/alienchoose.png";
 const Main = ({ name, setName, hideMain, setHideMain }) => {
-  const [termName, setTermName] = useState();
-  const [inputError, setInputError] = useState();
+  const [termName, setTermName] = useState("");
+  const [inputError, setInputError] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const censor = new CensorSensor();
   const checkIfAppropriate = (termName) => {
@@ -65,7 +65,7 @@ const Main = ({ name, setName, hideMain, setHideMain }) => {
               onChange={(e) => setTermName(e.target.value)}
             />
             <AlertBox type="name-alert" error={inputError} show={showAlert} />
-            <input type="submit" value="DONE" />
+            <button className="no-name-btn">Done</button>
           </form>
           <button onClick={main_backscreen} className="no-name-btn">
             I WILL BE AN ALIEN INSTEAD

@@ -16,7 +16,7 @@ In 2023, I updated the application by: hosting the back-end on Google Cloud inst
 
 ### GAMESPOT features
 
-1. Censor library to prevent users from using too short/too long words or using curse words.
+1. Censor library to prevent users from using too short/too long words or using curse words in reviews and nicknames.
 2. Two games - computer science quiz and movies imdb guessing game - that use free APIs.
 3. Rules or instructions for both games before starting the game.
 4. Allow users to create their own nickname or choose a random generated one.

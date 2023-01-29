@@ -30,7 +30,7 @@ const Movies = ({ name, readRules, setReadRules, lifes, setLifes }) => {
     game: "movies",
   });
 
-  useEffect(async () => {
+  useEffect(() => {
     fetch(FEATURED_API)
       .then((res) => res.json())
       .catch((e) => console.log(e))
