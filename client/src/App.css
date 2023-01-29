@@ -333,6 +333,15 @@ footer {
   flex-direction: column;
   justify-content: space-between;
 }
+.game-review-box {
+  align-items: center;
+  justify-self: center;
+  text-align: center;
+}
+
+.game-review-box span {
+  font-size: 10px;
+}
 .gamespot-vertical {
   writing-mode: vertical-rl;
   margin-right: 0.5em;
@@ -524,7 +533,7 @@ td {
 .phrase {
   margin: auto;
   margin-bottom: 3em;
-  width: 50%;
+  width: 70%;
   line-height: 2em;
   display: flex;
   text-align: center;
@@ -536,6 +545,9 @@ td {
 .phrase-name {
   color: rgba(180, 77, 77, 0.8);
   font-size: 28px;
+}
+.typing-text-box {
+  height: 30%;
 }
 /* Movies */
 .ms-game,
@@ -776,6 +788,7 @@ footer img {
   }
   .phrase {
     height: 100vh;
+    width: 90%;
   }
   .container {
     overflow-y: scroll;

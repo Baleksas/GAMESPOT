@@ -12,9 +12,24 @@ const Review = ({ review }) => {
       </div>
       <div className="review-game">
         <div className="game-icon">
-          {review.game === "CSQuiz" && <img src={CSQuiz} alt="CSQuiz" />}
-          {review.game === "movies" && <img src={Movies} alt="movies" />}
-          {review.game === "other" && <img src={Other} alt="Other" />}
+          {review.game === "CSQuiz" && (
+            <div className="game-review-box">
+              <img src={CSQuiz} alt="CSQuiz" />
+              <span>CSQuiz</span>
+            </div>
+          )}
+          {review.game === "movies" && (
+            <div className="game-review-box">
+              <img src={Movies} alt="movies" />
+              <span>MOVIES</span>
+            </div>
+          )}
+          {review.game === "other" && (
+            <div className="game-review-box">
+              <img src={Other} alt="Other" />
+              <span>OTHER</span>
+            </div>
+          )}
         </div>
       </div>
     </div>

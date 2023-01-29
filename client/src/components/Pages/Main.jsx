@@ -84,17 +84,19 @@ const Main = ({ name, setName, hideMain, setHideMain }) => {
               <Link to="/CSQuiz">CSQuiz {"<-"}</Link>
             </li>
             <li>
-              <img width={50} src={alienchoose} alt="a" />
+              <img width={100} src={alienchoose} alt="a" />
             </li>
             <li className={`chooseItem`}>
               <Link to="/movies">{"->"}Movies</Link>
             </li>
           </div>
-          <Typing speed={10}>
-            <p>
-              {Text.phrases[Math.floor(Math.random() * Text.phrases.length)]}
-            </p>
-          </Typing>
+          <div className="typing-text-box">
+            <Typing speed={8}>
+              <p>
+                {Text.phrases[Math.floor(Math.random() * Text.phrases.length)]}
+              </p>
+            </Typing>
+          </div>
         </div>
       )}
       <Faq />

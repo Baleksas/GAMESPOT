@@ -29,10 +29,9 @@ In 2023, I updated the application by: hosting the back-end on Google Cloud inst
 
 ### Technologies used
 
-1. React
-2. Express
-3. MongoDB
-4. Node
+1. React & Redux
+2. Node & Express
+3. MongoDB Atlas
 
 ### Deployment
 
