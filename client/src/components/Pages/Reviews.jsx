@@ -13,7 +13,8 @@ const Reviews = ({ name }) => {
   useEffect(() => {
     dispatch(getReviews());
   }, [dispatch]);
-  const reviews = useSelector((state) => state.reviews);
+  let reviews = useSelector((state) => state.reviews);
+  console.log(reviews);
 
   return (
     <motion.section

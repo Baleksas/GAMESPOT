@@ -1,5 +1,4 @@
 import React from "react";
-import Typing from "react-typing-animation";
 
 const Rules = ({ game, setReadRules, readRules }) => {
   const read = () => {

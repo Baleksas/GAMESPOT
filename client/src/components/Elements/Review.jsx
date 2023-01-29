@@ -4,6 +4,7 @@ import Movies from "../../img/Movies.gif";
 import Other from "../../img/Background.gif";
 
 const Review = ({ review }) => {
+  console.log(review.message);
   return (
     <div className="review">
       <div className="review-text">
@@ -24,10 +25,10 @@ const Review = ({ review }) => {
               <span>MOVIES</span>
             </div>
           )}
-          {review.game === "other" && (
+          {review.game === "web-app" && (
             <div className="game-review-box">
               <img src={Other} alt="Other" />
-              <span>OTHER</span>
+              <span>Web app</span>
             </div>
           )}
         </div>

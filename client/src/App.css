@@ -602,6 +602,7 @@ td {
 }
 .indicator img {
   max-height: 100px;
+  margin: 1em 0;
 }
 
 .movie-display {
@@ -806,18 +807,18 @@ footer img {
     margin: 2em 0;
   }
   .lifes-div {
-    width: 100%;
-    position: absolute;
+    /* width: 80%; */
+    /* position: absolute; */
     flex-direction: row;
     top: 0;
-    border-left: none;
+    margin: 2em 0;
+    /* border-left: none; */
   }
   .poster {
     margin: 6em 0;
   }
   .movie-info {
     text-align: center;
-    margin-bottom: 3em;
     align-items: center;
   }
   .guess {

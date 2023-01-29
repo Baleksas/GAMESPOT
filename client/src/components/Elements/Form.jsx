@@ -72,7 +72,7 @@ const Form = ({ name }) => {
           >
             <option value="CSQuiz">CSQuiz</option>
             <option value="movies">movies</option>
-            <option value="other">Other</option>
+            <option value="web-app">Web app</option>
           </select>
           <button className="no-name-btn">DONE</button>
         </form>

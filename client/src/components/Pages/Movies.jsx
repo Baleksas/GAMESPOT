@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Movie from "../Elements/Movie";
 import AlienCorrect from "../../img/AlienIconCorrect.png";
@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import Rules from "./Rules";
 import { Link } from "react-router-dom";
 import LifesBox from "../Elements/LifesBox";
+import AlienNeutral from "../../img/AlienIcon.png";
 
 const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
 
@@ -142,11 +143,11 @@ const Movies = ({ name, readRules, setReadRules, lifes, setLifes }) => {
             <LifesBox lifes={lifes} />
             <div>Score: {score}</div>
             <div className="indicator">
-              {isCorrect ? (
-                <img src={AlienCorrect} alt="YES" />
-              ) : (
-                <img src={AlienIncorrect} alt="NO" />
+              {typeof isCorrect === "undefined" && (
+                <img src={AlienNeutral} alt="Neutral" />
               )}
+              {isCorrect === true && <img src={AlienCorrect} alt="YES" />}
+              {isCorrect === false && <img src={AlienIncorrect} alt="No" />}
             </div>
             {answerWas && (
               <div>

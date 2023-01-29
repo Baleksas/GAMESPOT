@@ -3,10 +3,11 @@ import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { createTop, updateTop } from "../../actions/tops";
 import { useDispatch } from "react-redux";
-import Life from "../../img/Life.png";
 import Rules from "./Rules";
 import AlienCorrect from "../../img/AlienIconCorrect.png";
 import AlienIncorrect from "../../img/AlienIconIncorrect.png";
+import AlienNeutral from "../../img/AlienIcon.png";
+
 import GameOne from "../Elements/GameOne";
 import { Link } from "react-router-dom";
 import LifesBox from "../Elements/LifesBox";
@@ -130,11 +131,11 @@ const CSQuiz = ({ name, readRules, setReadRules, lifes, setLifes }) => {
 
             <div>Score: {score}</div>
             <div className="indicator">
-              {isCorrect ? (
-                <img src={AlienCorrect} alt="YES" />
-              ) : (
-                <img src={AlienIncorrect} alt="NO" />
+              {typeof isCorrect === "undefined" && (
+                <img src={AlienNeutral} alt="Neutral" />
               )}
+              {isCorrect === true && <img src={AlienCorrect} alt="YES" />}
+              {isCorrect === false && <img src={AlienIncorrect} alt="No" />}
             </div>
             {answerWas && (
               <div>

@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Ufo_closed from "../img/Ufo_black.png";
 import Ufo_open from "../img/Ufo_white.png";
 
-const Header = ({ hideMain, setHideMain }) => {
+const Header = ({ setHideMain }) => {
   const [mobileIsOpen, setMobileIsOpen] = useState(false);
 
   return (
     <>
       <div className="burger">
-        {/* <span id="title">GAMESPOT</span> */}
         <button onClick={() => setMobileIsOpen(!mobileIsOpen)}>
           <img src={mobileIsOpen ? Ufo_closed : Ufo_open} alt="" />
         </button>
