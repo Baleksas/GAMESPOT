@@ -1,28 +1,13 @@
 import React from "react";
-import { motion } from "framer-motion";
 import Github from "../img/Github.png";
 import LinkedIn from "../img/li.png";
-import Skull from "../img/Skull.png";
 
 const Faq = () => {
   return (
     <>
       <div id="FAQ" className="FAQ">
         <div className="extra_info">
-          <p>
-            This full-stack application is censored with
-            <a
-              target="_blank"
-              style={{
-                textDecoration: "none",
-                color: "white",
-              }}
-              href="https://www.npmjs.com/package/censor-sensor"
-            >
-              <i> Censor-Sensor </i>
-            </a>
-            library
-          </p>
+          <p>This full-stack application contains profanity filter</p>
         </div>
         <h2>FAQ</h2>
         <ul>

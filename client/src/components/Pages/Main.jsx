@@ -6,7 +6,7 @@ import { CensorSensor } from "censor-sensor";
 import Faq from "../../components/Faq";
 import AlertBox from "../Elements/AlertBox";
 import { Link } from "react-router-dom";
-import alienchoose from "../../img/alienchoose.png";
+import alienchoose from "../../img/alienchoosew.webp";
 const Main = ({ name, setName, hideMain, setHideMain }) => {
   const [termName, setTermName] = useState("");
   const [inputError, setInputError] = useState("");
@@ -83,8 +83,15 @@ const Main = ({ name, setName, hideMain, setHideMain }) => {
             <li className={`chooseItem`}>
               <Link to="/CSQuiz">CSQuiz {"<-"}</Link>
             </li>
-            <li>
+            <li
+              className="CHOOSE"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
               <img width={100} src={alienchoose} alt="a" />
+              <span>CHOOSE</span>
             </li>
             <li className={`chooseItem`}>
               <Link to="/movies">{"->"}Movies</Link>

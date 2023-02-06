@@ -51,8 +51,10 @@ header,
   font-weight: bolder;
 }
 
-.chooseItem a {
+.chooseItem a,
+.CHOOSE {
   color: greenyellow;
+  font-size: 12px;
 }
 .mobile-header ul {
   height: 10em;
@@ -547,7 +549,8 @@ td {
   font-size: 28px;
 }
 .typing-text-box {
-  height: 30%;
+  min-height: 30%;
+  height: max-content;
 }
 /* Movies */
 .ms-game,
@@ -686,6 +689,10 @@ footer img {
 }
 .rules-ul li {
   list-style: disc;
+  margin: 1em 0;
+}
+.rules table {
+  text-align: center;
 }
 .goal {
   text-align: center;
@@ -747,8 +754,8 @@ footer img {
     flex-direction: column;
   }
   .FAQ {
-    width: 150px;
-    font-size: 22px;
+    /* width: 150px; */
+    font-size: 14px;
   }
   .name-form {
     max-width: 100%;
@@ -788,7 +795,8 @@ footer img {
     width: 100%;
   }
   .phrase {
-    height: 100vh;
+    min-height: 130vh;
+    height: max-content;
     width: 90%;
   }
   .container {
